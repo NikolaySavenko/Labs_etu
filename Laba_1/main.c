@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 /*
-TODO
-add task text mb here?
+    2^x - 2 * e^(-x) = 0  solve to  0.00001
 */
 int main()
 {

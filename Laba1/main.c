@@ -7,11 +7,9 @@ float f(float x);
 
 int main()
 {
-    float leftBorder, rigthBorder;
+    float lBorder, rBorder;
 
-    scanf("%f %f", &leftBorder, &rigthBorder);
-    printf("inputted values is %f %f \n\n\n\n\n", leftBorder, rigthBorder);
-    printf("%f\n\n\n", f(leftBorder));
+    scanf("%f %f", &lBorder, &rBorder);
 
     return 0;
 }

@@ -1,0 +1,44 @@
+function func(float x) {
+    return( pow(2, x) - 2 * exp(-x))
+}
+
+function hasNeededAccuracy(float bound, float root) {
+    return((root - bound) < accuracy)
+}
+
+function getRelativeRoot(float a, float b) {
+    return( (a + b) / 2)
+}
+
+function sign(float x) {
+    if (x > 0){
+        return( 1)
+    }
+    if (x < 0){
+        return( -1)
+    }
+    return( 0)
+}
+
+function main()
+{
+
+	input(lBorder, rBorder)
+	lBorderSign = NULL
+	rBorderSign = NULL
+    invoke(relativeRoot = getRelativeRoot(lBorder,rBorder))
+
+    while (!invoke(hasNeededAccuracy(func(lBorder), func(relativeRoot)))) {
+		invoke(lBorderSign = sign(func(relativeRoot)))
+		invoke(rBorderSign = sign(func(rBorder)))
+        if (lBorderSign != rBorderSign) {
+            lBorder = relativeRoot
+        } else {
+            rBorder = relativeRoot
+        }
+        invoke(relativeRoot = getRelativeRoot(lBorder,rBorder))
+    }
+
+    output(relativeRoot)
+
+}

@@ -5,19 +5,20 @@
 float func(float x);
 int sign(float x);
 int hasNeededAccuracy(float bound, float root);
-int numLen(float x);
 float getRelativeRoot(float a, float b);
 
 int main()
 {
     float lBorder, rBorder, relativeRoot;
+    int lBorderSign, rBorderSign;
 
     scanf("%f %f", &lBorder, &rBorder);
     relativeRoot  = getRelativeRoot(lBorder, rBorder);
 
     while (!hasNeededAccuracy(func(lBorder), func(relativeRoot))) {
-
-        if (sign(func(relativeRoot)) != sign(func(rBorder))) {
+        lBorderSign = sign(func(relativeRoot));
+        rBorderSign = sign(func(rBorder));
+        if (lBorderSign != rBorderSign) {
             lBorder = relativeRoot;
         } else {
             rBorder = relativeRoot;
@@ -36,17 +37,6 @@ float func(float x) {
 
 int hasNeededAccuracy(float bound, float root) {
     return (root - bound) < accuracy;
-}
-
-int numLen(float d) {
-    int test = (int)d;
-    int count = 0;
-    while (test != d) {
-        count++;
-        d *= 10;
-        test = (int)d;
-    }
-    return count;
 }
 
 float getRelativeRoot(float a, float b) {

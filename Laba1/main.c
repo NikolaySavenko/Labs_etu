@@ -11,7 +11,6 @@ int main()
 {
     float lBorder, rBorder, relativeRoot;
     int lBorderSign, rBorderSign;
-
     scanf("%f %f", &lBorder, &rBorder);
     relativeRoot  = getRelativeRoot(lBorder, rBorder);
 
@@ -44,7 +43,8 @@ float getRelativeRoot(float a, float b) {
 }
 
 int sign(float x) {
-    if (x > 0) return 1;
-    if (x < 0) return -1;
-    return 0;
+    int output = 0;
+    if (x > 0) output = 1;
+    if (x < 0) output = -1;
+    return output;
 }

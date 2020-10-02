@@ -30,8 +30,8 @@ function main()
 	lBorderSign = NULL
 	rBorderSign = NULL
     invoke(relativeRoot = getRelativeRoot(lBorder,rBorder))
-
-    while (!invoke(hasNeededAccuracy(func(lBorder), func(relativeRoot)))) {
+    invoke(accuracy = hasNeededAccuracy(func(lBorder), func(relativeRoot)))
+    while (!accuracy) {
 		invoke(lBorderSign = sign(func(relativeRoot)))
 		invoke(rBorderSign = sign(func(rBorder)))
         if (lBorderSign != rBorderSign) {

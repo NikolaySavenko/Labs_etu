@@ -9,6 +9,8 @@
 C:/Git_Projects/Labs_etu/Laba2/main.c
 stdio.h
 -
+stdlib.h
+-
 math.h
 -
 

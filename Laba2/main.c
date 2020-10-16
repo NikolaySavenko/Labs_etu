@@ -1,22 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
 int main()
 {
-    int a;
+    int k;
     int i = 0;
     int *arr;
     int len = 0;
-
-    int lbi;
-    int lb = 0;
-    int rbi;
-    int rb = 0;
-
-    int nearestI = -1;
-    int nearest = 0;
-
+	int buf = 0;
+    
     printf("Len of array is ");
     scanf("%d", &len);
 
@@ -27,38 +19,19 @@ int main()
         i++;
     }
 
-    printf("Input A: ");
-    scanf("%d", &a);
+    printf("Input K: ");
+    scanf("%d", &k);
 
-    rbi = len - 1;
-    lbi = 0;
+    buf = arr[len - 1];
+    for(i = len - 2; i >= k; i--) {
+    	arr[i + 1] = arr[i];
+    }
+    arr[k] = buf;
 
-    i = 0;
-    printf("a)");
-    while (i < len && arr[i] < a) {
-        printf(" %d ", arr[i]);
-        i++;
+    printf("changed array is \n");
+    for (i = 0; i < len; i++) {
+		printf("%d ", arr[i]);
     }
 
-    i = 0;
-    while (i < len && arr[i] < a) {
-        lbi = i;
-        lb = arr[lbi];
-        rbi = i + 1;
-        rb = arr[rbi];
-        i++;
-    }
-    printf("\n b) left arr[%d] = %d; right arr[%d] = %d", lbi, lb, rbi, rb);
-
-    while (a - lb < rb - a && nearestI < 0) {
-          nearestI = lbi;
-          nearest = lb;
-    }
-    while (nearestI < 0) {
-        nearestI = rbi;
-        nearest = rb;
-    }
-
-    printf("\n c) nearest is arr[%d] = %d", nearestI, nearest);
     return 0;
 }

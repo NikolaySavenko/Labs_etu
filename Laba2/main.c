@@ -5,7 +5,7 @@ int main()
 {
     int k;
     int i = 0;
-    int *arr;
+    int *arr = NULL;
     int len = 0;
 	int buf = 0;
     
@@ -13,25 +13,29 @@ int main()
     scanf("%d", &len);
 
     arr = (int *)malloc(len * sizeof(int));
-    while (i < len) {
-        printf("%d element is: ", i);
-        scanf("%d", &arr[i]);
-        i++;
-    }
 
-    printf("Input K: ");
-    scanf("%d", &k);
+    if (arr != NULL) {
+		while (i < len) {
+			printf("%d element is: ", i);
+			scanf("%d", &arr[i]);
+			i++;
+		}
 
-    buf = arr[len - 1];
-    for(i = len - 2; i >= k; i--) {
-    	arr[i + 1] = arr[i];
-    }
-    arr[k] = buf;
+		printf("Input K: ");
+		scanf("%d", &k);
 
-    printf("changed array is \n");
-    for (i = 0; i < len; i++) {
-		printf("%d ", arr[i]);
-    }
+		buf = arr[len - 1];
+		for(i = len - 2; i >= k; i--) {
+			arr[i + 1] = arr[i];
+		}
+		arr[k] = buf;
 
+		printf("changed array is \n");
+		for (i = 0; i < len; i++) {
+			printf("%d ", arr[i]);
+		}
+
+		free(arr);
+    } else puts("Error at memory allocation!! Try again.");
     return 0;
 }

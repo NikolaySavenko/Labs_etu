@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
-    <generated />
+    <generated>
+      <config projectName="Laba1" targetName="Laba1" />
+    </generated>
   </component>
   <component name="CMakeSettings">
     <configurations>
@@ -28,10 +30,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82b1d900-1016-4780-8e74-9f7580cd9ede" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Laba2/cmake-build-debug/CMakeFiles/Laba1.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba2/cmake-build-debug/CMakeFiles/Laba1.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laba2/cmake-build-debug/Laba1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba2/cmake-build-debug/Laba1.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laba2/send/Savenko-lab02.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba2/send/Savenko-lab02.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Laba2/cmake-build-debug/CMakeFiles/Laba1.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba2/cmake-build-debug/CMakeFiles/Laba1.dir/main.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Tests.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Tests.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +42,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -54,7 +56,24 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../C_tests" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/CMakeLists.txt" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Laba1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Laba1" TARGET_NAME="Laba1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Laba1" RUN_TARGET_NAME="Laba1">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -66,6 +85,7 @@
       <updated>1602968684539</updated>
       <workItem from="1602968685645" duration="582000" />
       <workItem from="1602969308241" duration="38000" />
+      <workItem from="1603095482275" duration="105000" />
     </task>
     <servers />
   </component>
@@ -89,9 +109,9 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="314" y="358" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1602969228648" />
-    <state x="640" y="458" key="FileChooserDialogImpl" timestamp="1602969344747">
+    <state x="640" y="458" key="FileChooserDialogImpl" timestamp="1603095553942">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="640" y="458" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1602969344747" />
+    <state x="640" y="458" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1603095553942" />
   </component>
 </project>

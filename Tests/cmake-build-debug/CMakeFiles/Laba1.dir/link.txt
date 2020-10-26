@@ -1,3 +1,0 @@
-C:\Users\Nikolay\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\202.7319.72\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\Laba1.dir/objects.a
-C:\GCC\gcc\bin\ar.exe cr CMakeFiles\Laba1.dir/objects.a @CMakeFiles\Laba1.dir\objects1.rsp
-C:\GCC\gcc\bin\gcc.exe  -Wall -pedantic -pedantic-errors -g   -Wl,--whole-archive CMakeFiles\Laba1.dir/objects.a -Wl,--no-whole-archive  -o Laba1.exe -Wl,--out-implib,libLaba1.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Laba1.dir\linklibs.rsp

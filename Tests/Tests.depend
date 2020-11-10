@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1603801490 source:c:\git_projects\labs_etu\tests\main.c
+	<stdlib.h>
+	<stdio.h>
+

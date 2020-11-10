@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="Laba4" targetName="Laba1" />
+      <config projectName="Laba4" targetName="Laba4" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="26d90f35-52a7-4ece-be6a-2ff585a577a2" name="Default Changelist" comment="project moved to CLion" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1i41WHf3sTr7syEfU1Nxm8TqMpp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Git_Projects\Labs_etu\Laba3" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Laba4" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Laba4" TARGET_NAME="Laba4" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Laba4" RUN_TARGET_NAME="Laba4">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="26d90f35-52a7-4ece-be6a-2ff585a577a2" name="Default Changelist" comment="" />
+      <created>1601152079921</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601152079921</updated>
+      <workItem from="1601152081286" duration="167000" />
+      <workItem from="1601197942516" duration="130000" />
+      <workItem from="1601304741235" duration="719000" />
+      <workItem from="1601305658846" duration="1024000" />
+      <workItem from="1601306851011" duration="2268000" />
+      <workItem from="1601311380196" duration="10812000" />
+      <workItem from="1601484918235" duration="981000" />
+      <workItem from="1601565146222" duration="2622000" />
+      <workItem from="1601665617588" duration="8363000" />
+      <workItem from="1601712930799" duration="132000" />
+      <workItem from="1601736655309" duration="152000" />
+      <workItem from="1602673535054" duration="8878000" />
+      <workItem from="1602701294630" duration="106000" />
+      <workItem from="1602754608080" duration="658000" />
+      <workItem from="1602758962321" duration="2476000" />
+      <workItem from="1602833724364" duration="4782000" />
+      <workItem from="1602866330317" duration="379000" />
+      <workItem from="1602950346365" duration="3020000" />
+      <workItem from="1602968632580" duration="51000" />
+      <workItem from="1603093689369" duration="1234000" />
+      <workItem from="1603095443530" duration="37000" />
+      <workItem from="1603792745661" duration="6163000" />
+      <workItem from="1603802289164" duration="3334000" />
+      <workItem from="1603907361438" duration="2624000" />
+      <workItem from="1603984057198" duration="1906000" />
+      <workItem from="1604047040748" duration="7945000" />
+      <workItem from="1604184367693" duration="2945000" />
+      <workItem from="1604245772616" duration="1948000" />
+      <workItem from="1604335171592" duration="6829000" />
+      <workItem from="1604872152204" duration="14000" />
+      <workItem from="1605005860159" duration="371000" />
+      <workItem from="1605006246982" duration="442000" />
+    </task>
+    <task id="LOCAL-00001" summary="project moved to CLion">
+      <created>1601307163579</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1601307163579</updated>
+    </task>
+    <task id="LOCAL-00002" summary="changed compiler options">
+      <created>1601311797770</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1601311797770</updated>
+    </task>
+    <task id="LOCAL-00003" summary="solution of task">
+      <created>1601323708504</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1601323708504</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fuck this lab...">
+      <created>1601679114830</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1601679114830</updated>
+    </task>
+    <task id="LOCAL-00005" summary="laba2 init">
+      <created>1602673717489</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1602673717489</updated>
+    </task>
+    <task id="LOCAL-00006" summary="simple solve">
+      <created>1602698466088</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1602698466088</updated>
+    </task>
+    <task id="LOCAL-00007" summary="solution changed to 9 variant">
+      <created>1602846502493</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1602846502493</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added malloc success check">
+      <created>1603094698044</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1603094698044</updated>
+    </task>
+    <task id="LOCAL-00009" summary="solution for 3 lab">
+      <created>1603801643177</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1603801643177</updated>
+    </task>
+    <task id="LOCAL-00010" summary="finished 3 lab">
+      <created>1603805915608</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1603805915608</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="project moved to CLion" />
+    <MESSAGE value="changed compiler options" />
+    <MESSAGE value="solution of task" />
+    <MESSAGE value="fuck this lab..." />
+    <MESSAGE value="laba2 init" />
+    <MESSAGE value="simple solve" />
+    <MESSAGE value="solution changed to 9 variant" />
+    <MESSAGE value="added malloc success check" />
+    <MESSAGE value="solution for 3 lab" />
+    <MESSAGE value="finished 3 lab" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished 3 lab" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2170" y="317" key="#C/C++" timestamp="1602835410771">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="2170" y="317" key="#C/C++/0.0.3440.1400@0.0.3440.1400" timestamp="1602835410771" />
+    <state x="1475" y="524" key="#Notifications" timestamp="1603803458178">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1475" y="524" key="#Notifications/0.0.3440.1400@0.0.3440.1400" timestamp="1603803458178" />
+    <state x="1174" y="355" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603794122246">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1174" y="355" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1603794122246" />
+    <state x="2335" y="406" key="#xdebugger.evaluate" timestamp="1604336218294">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="2335" y="406" key="#xdebugger.evaluate/0.0.3440.1400@0.0.3440.1400" timestamp="1604336218294" />
+    <state x="1500" y="455" key="FileChooserDialogImpl" timestamp="1604872163858">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1604872163858" />
+    <state width="833" height="459" key="GridCell.Tab.0.bottom" timestamp="1604344313492">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="833" height="459" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1604344313492" />
+    <state width="833" height="459" key="GridCell.Tab.0.center" timestamp="1604344313491">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="833" height="459" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1604344313491" />
+    <state width="833" height="459" key="GridCell.Tab.0.left" timestamp="1604344313491">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="833" height="459" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1604344313491" />
+    <state width="833" height="459" key="GridCell.Tab.0.right" timestamp="1604344313491">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="833" height="459" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1604344313491" />
+    <state width="833" height="459" key="GridCell.Tab.1.bottom" timestamp="1604344313492">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="833" height="459" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1604344313492" />
+    <state width="833" height="459" key="GridCell.Tab.1.center" timestamp="1604344313492">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="833" height="459" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1604344313492" />
+    <state width="833" height="459" key="GridCell.Tab.1.left" timestamp="1604344313492">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="833" height="459" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1604344313492" />
+    <state width="833" height="459" key="GridCell.Tab.1.right" timestamp="1604344313492">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="833" height="459" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1604344313492" />
+    <state x="1550" y="402" key="RollbackChangesDialog" timestamp="1601485210220">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1550" y="402" key="RollbackChangesDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1601485210220" />
+    <state x="568" y="354" width="1575" height="710" key="SettingsEditor" timestamp="1605006193968">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="568" y="354" width="1575" height="710" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1605006193968" />
+    <state x="1312" y="433" key="Vcs.Push.Dialog.v2" timestamp="1603805921095">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1312" y="433" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1603805921095" />
+    <state x="1537" y="614" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601565340854">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1537" y="614" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.3440.1400@0.0.3440.1400" timestamp="1601565340854" />
+    <state x="1272" y="429" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1601314570953">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1272" y="429" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.3440.1400@0.0.3440.1400" timestamp="1601314570953" />
+    <state x="1423" y="300" width="585" height="801" key="find.popup" timestamp="1601319045945">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1423" y="300" width="585" height="801" key="find.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1601319045945" />
+    <state x="1496" y="485" key="refactoring.ChangeSignatureDialog" timestamp="1601315432217">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1496" y="485" key="refactoring.ChangeSignatureDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1601315432217" />
+    <state x="1376" y="330" key="run.anything.popup" timestamp="1601315205256">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1376" y="330" key="run.anything.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1601315205256" />
+    <state x="1511" y="558" key="scopes" timestamp="1601319032273">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1511" y="558" key="scopes/0.0.3440.1400@0.0.3440.1400" timestamp="1601319032273" />
+    <state x="1383" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1602674122465">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1383" y="315" width="672" height="678" key="search.everywhere.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1602674122465" />
+  </component>
+</project>

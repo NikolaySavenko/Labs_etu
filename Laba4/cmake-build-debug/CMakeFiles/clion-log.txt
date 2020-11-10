@@ -1,0 +1,4 @@
+C:\Users\Nikolay\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\202.7319.72\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=C:/GCC/gcc/bin/gcc.exe -G "CodeBlocks - MinGW Makefiles" C:\Git_Projects\Labs_etu\Laba4
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Git_Projects/Labs_etu/Laba4/cmake-build-debug

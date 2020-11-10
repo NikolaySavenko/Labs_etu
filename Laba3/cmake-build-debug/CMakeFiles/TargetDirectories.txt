@@ -1,0 +1,3 @@
+C:/Git_Projects/Labs_etu/Laba3/cmake-build-debug/CMakeFiles/Laba3.dir
+C:/Git_Projects/Labs_etu/Laba3/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Git_Projects/Labs_etu/Laba3/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -33,7 +33,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26d90f35-52a7-4ece-be6a-2ff585a577a2" name="Default Changelist" comment="project moved to CLion" />
+    <list default="true" id="26d90f35-52a7-4ece-be6a-2ff585a577a2" name="Default Changelist" comment="project moved to CLion">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Laba4.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Laba4.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,6 +61,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
@@ -116,7 +121,7 @@
       <workItem from="1604335171592" duration="6829000" />
       <workItem from="1604872152204" duration="14000" />
       <workItem from="1605005860159" duration="371000" />
-      <workItem from="1605006246982" duration="442000" />
+      <workItem from="1605006246982" duration="7223000" />
     </task>
     <task id="LOCAL-00001" summary="project moved to CLion">
       <created>1601307163579</created>
@@ -188,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603805915608</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="prepared for 4 lab">
+      <created>1605006956458</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1605006956458</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,7 +229,8 @@
     <MESSAGE value="added malloc success check" />
     <MESSAGE value="solution for 3 lab" />
     <MESSAGE value="finished 3 lab" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished 3 lab" />
+    <MESSAGE value="prepared for 4 lab" />
+    <option name="LAST_COMMIT_MESSAGE" value="prepared for 4 lab" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2170" y="317" key="#C/C++" timestamp="1602835410771">
@@ -240,38 +253,38 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1604872163858" />
-    <state width="833" height="459" key="GridCell.Tab.0.bottom" timestamp="1604344313492">
+    <state width="789" height="215" key="GridCell.Tab.0.bottom" timestamp="1605015925235">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="833" height="459" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1604344313492" />
-    <state width="833" height="459" key="GridCell.Tab.0.center" timestamp="1604344313491">
+    <state width="789" height="215" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1605015925235" />
+    <state width="789" height="215" key="GridCell.Tab.0.center" timestamp="1605015925235">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="833" height="459" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1604344313491" />
-    <state width="833" height="459" key="GridCell.Tab.0.left" timestamp="1604344313491">
+    <state width="789" height="215" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1605015925235" />
+    <state width="789" height="215" key="GridCell.Tab.0.left" timestamp="1605015925235">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="833" height="459" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1604344313491" />
-    <state width="833" height="459" key="GridCell.Tab.0.right" timestamp="1604344313491">
+    <state width="789" height="215" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1605015925235" />
+    <state width="789" height="215" key="GridCell.Tab.0.right" timestamp="1605015925235">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="833" height="459" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1604344313491" />
-    <state width="833" height="459" key="GridCell.Tab.1.bottom" timestamp="1604344313492">
+    <state width="789" height="215" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1605015925235" />
+    <state width="1690" height="349" key="GridCell.Tab.1.bottom" timestamp="1605014415224">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="833" height="459" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1604344313492" />
-    <state width="833" height="459" key="GridCell.Tab.1.center" timestamp="1604344313492">
+    <state width="1690" height="349" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1605014415224" />
+    <state width="1690" height="349" key="GridCell.Tab.1.center" timestamp="1605014415223">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="833" height="459" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1604344313492" />
-    <state width="833" height="459" key="GridCell.Tab.1.left" timestamp="1604344313492">
+    <state width="1690" height="349" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1605014415223" />
+    <state width="1690" height="349" key="GridCell.Tab.1.left" timestamp="1605014415223">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="833" height="459" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1604344313492" />
-    <state width="833" height="459" key="GridCell.Tab.1.right" timestamp="1604344313492">
+    <state width="1690" height="349" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1605014415223" />
+    <state width="1690" height="349" key="GridCell.Tab.1.right" timestamp="1605014415224">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="833" height="459" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1604344313492" />
+    <state width="1690" height="349" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1605014415224" />
     <state x="1550" y="402" key="RollbackChangesDialog" timestamp="1601485210220">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -280,10 +293,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="568" y="354" width="1575" height="710" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1605006193968" />
-    <state x="1312" y="433" key="Vcs.Push.Dialog.v2" timestamp="1603805921095">
+    <state x="1312" y="433" key="Vcs.Push.Dialog.v2" timestamp="1605007002954">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1312" y="433" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1603805921095" />
+    <state x="1312" y="433" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1605007002954" />
     <state x="1537" y="614" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601565340854">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -296,14 +309,14 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1423" y="300" width="585" height="801" key="find.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1601319045945" />
-    <state x="1496" y="485" key="refactoring.ChangeSignatureDialog" timestamp="1601315432217">
+    <state x="1496" y="485" key="refactoring.ChangeSignatureDialog" timestamp="1605008010412">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1496" y="485" key="refactoring.ChangeSignatureDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1601315432217" />
-    <state x="1376" y="330" key="run.anything.popup" timestamp="1601315205256">
+    <state x="1496" y="485" key="refactoring.ChangeSignatureDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1605008010412" />
+    <state x="1376" y="330" width="672" height="677" key="run.anything.popup" timestamp="1605014533052">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1376" y="330" key="run.anything.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1601315205256" />
+    <state x="1376" y="330" width="672" height="677" key="run.anything.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1605014533052" />
     <state x="1511" y="558" key="scopes" timestamp="1601319032273">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>

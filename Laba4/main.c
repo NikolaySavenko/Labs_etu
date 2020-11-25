@@ -5,7 +5,11 @@ void printArray(int **arr, int n, int m);
 int *makeColumn(int *line, int n);
 
 int main() {
-	int n, m, i, j, b = 0;
+	int n = 0;
+	int m = 0;
+	int i = 0;
+	int j = 0;
+	int b = 0;
 	int *buffer = NULL;
 	int **matrix = NULL;
 	int **matrix2 = NULL;
@@ -22,10 +26,7 @@ int main() {
 			matrix[i] = (int*)malloc(m * sizeof(int));
 			if (matrix[i] == NULL) {
 				puts("Error at memory allocation!! Try again.");
-				for (j = i - 1; j >= 0; j--) {
-					free(matrix[j]);
-				}
-				free(matrix);
+				for (j = i - 1; j >= 0; j--) free(matrix[j]);
 				n = 0;
 				m = 0;
 			}
@@ -41,10 +42,9 @@ int main() {
 			matrix2[i] = (int*)malloc(n * sizeof(int));
 			if (matrix2[i] == NULL) {
 				puts("Error at memory allocation!! Try again.");
-				for (j = i - 1; j >= 0; j--) {
-					free(matrix2[j]);
-				}
-				free(matrix2);
+				for (j = i - 1; j >= 0; j--) free(matrix2[j]);
+				for (i = 0; i < n; i++) free(matrix[i]);
+
 				n = 0;
 				m = 0;
 			}
@@ -61,17 +61,18 @@ int main() {
 		printArray(matrix2, m, b);
 
 		for (i = 0; i < n; i++) free(matrix[i]);
-		free(matrix);
 		for (i = 0; i < m; i++) free(matrix2[i]);
-		free(matrix2);
-
 	} else puts("Error at memory allocation!! Try again.");
+	/* if memory allocated for matrix or matrix2 */
+	if (matrix != NULL) free(matrix);
+	if (matrix2 != NULL) free(matrix2);
 	return 0;
 }
 
 int *makeColumn(int *line, int n) {
 	int *column = (int*)malloc(n * sizeof(int));
-	int i, lstDiv = -1;
+	int i = 0;
+	int lstDiv = -1;
 	if (column != NULL) {
 		for (i = 0; i < n; i++) {
 			column[i] = line[n - i - 1];

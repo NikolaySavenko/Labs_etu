@@ -28,10 +28,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82b1d900-1016-4780-8e74-9f7580cd9ede" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Laba2/cmake-build-debug/CMakeFiles/Laba1.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba2/cmake-build-debug/CMakeFiles/Laba1.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laba2/cmake-build-debug/Laba1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba2/cmake-build-debug/Laba1.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laba2/send/Savenko-lab02.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba2/send/Savenko-lab02.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kursach1/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kursach1/input.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kursach1/main.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kursach1/main.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kursach1/main.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Laba4.1/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Laba4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Laba4/cmake-build-debug/Laba4.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba4/cmake-build-debug/Laba4.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Laba4/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba4/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests.layout" beforeDir="false" afterPath="$PROJECT_DIR$/Tests.layout" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/Tests.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/Tests.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/main.o" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +63,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../C_tests" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -66,6 +75,7 @@
       <updated>1602968684539</updated>
       <workItem from="1602968685645" duration="582000" />
       <workItem from="1602969308241" duration="38000" />
+      <workItem from="1606062941974" duration="1000" />
     </task>
     <servers />
   </component>

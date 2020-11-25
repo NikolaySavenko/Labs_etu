@@ -22,7 +22,13 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
@@ -63,7 +69,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Laba4.1" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -127,7 +133,9 @@
       <workItem from="1605006246982" duration="7539000" />
       <workItem from="1605021582849" duration="12000" />
       <workItem from="1605178085450" duration="1452000" />
-      <workItem from="1605208463906" duration="6303000" />
+      <workItem from="1605208463906" duration="10394000" />
+      <workItem from="1605298911132" duration="999000" />
+      <workItem from="1605363276857" duration="2867000" />
     </task>
     <task id="LOCAL-00001" summary="project moved to CLion">
       <created>1601307163579</created>
@@ -213,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605016067499</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fixed solution">
+      <created>1605284807048</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1605284807048</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,7 +239,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -244,7 +271,8 @@
     <MESSAGE value="finished 3 lab" />
     <MESSAGE value="prepared for 4 lab" />
     <MESSAGE value="solution?" />
-    <option name="LAST_COMMIT_MESSAGE" value="solution?" />
+    <MESSAGE value="fixed solution" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed solution" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2170" y="317" key="#C/C++" timestamp="1602835410771">
@@ -263,42 +291,42 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="2335" y="406" key="#xdebugger.evaluate/0.0.3440.1400@0.0.3440.1400" timestamp="1604336218294" />
-    <state x="1500" y="455" key="FileChooserDialogImpl" timestamp="1605021592619">
+    <state x="1500" y="455" key="FileChooserDialogImpl" timestamp="1605369952119">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1605021592619" />
-    <state width="1674" height="399" key="GridCell.Tab.0.bottom" timestamp="1605284498536">
+    <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1605369952119" />
+    <state width="1674" height="220" key="GridCell.Tab.0.bottom" timestamp="1605369953550">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1674" height="399" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1605284498536" />
-    <state width="1674" height="399" key="GridCell.Tab.0.center" timestamp="1605284498536">
+    <state width="1674" height="220" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1605369953550" />
+    <state width="1674" height="220" key="GridCell.Tab.0.center" timestamp="1605369953550">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1674" height="399" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1605284498536" />
-    <state width="1674" height="399" key="GridCell.Tab.0.left" timestamp="1605284498535">
+    <state width="1674" height="220" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1605369953550" />
+    <state width="1674" height="220" key="GridCell.Tab.0.left" timestamp="1605369953549">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1674" height="399" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1605284498535" />
-    <state width="1674" height="399" key="GridCell.Tab.0.right" timestamp="1605284498536">
+    <state width="1674" height="220" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1605369953549" />
+    <state width="1674" height="220" key="GridCell.Tab.0.right" timestamp="1605369953550">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1674" height="399" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1605284498536" />
-    <state width="1674" height="417" key="GridCell.Tab.1.bottom" timestamp="1605284477824">
+    <state width="1674" height="220" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1605369953550" />
+    <state width="1674" height="660" key="GridCell.Tab.1.bottom" timestamp="1605369953544">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1674" height="417" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1605284477824" />
-    <state width="1674" height="417" key="GridCell.Tab.1.center" timestamp="1605284477823">
+    <state width="1674" height="660" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1605369953544" />
+    <state width="1674" height="660" key="GridCell.Tab.1.center" timestamp="1605369953543">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1674" height="417" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1605284477823" />
-    <state width="1674" height="417" key="GridCell.Tab.1.left" timestamp="1605284477823">
+    <state width="1674" height="660" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1605369953543" />
+    <state width="1674" height="660" key="GridCell.Tab.1.left" timestamp="1605369953543">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1674" height="417" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1605284477823" />
-    <state width="1674" height="417" key="GridCell.Tab.1.right" timestamp="1605284477824">
+    <state width="1674" height="660" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1605369953543" />
+    <state width="1674" height="660" key="GridCell.Tab.1.right" timestamp="1605369953543">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1674" height="417" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1605284477824" />
+    <state width="1674" height="660" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1605369953543" />
     <state x="1550" y="402" key="RollbackChangesDialog" timestamp="1601485210220">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -307,10 +335,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="568" y="354" width="1575" height="710" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1605006193968" />
-    <state x="1312" y="433" key="Vcs.Push.Dialog.v2" timestamp="1605016090253">
+    <state x="1312" y="433" key="Vcs.Push.Dialog.v2" timestamp="1605284809336">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1312" y="433" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1605016090253" />
+    <state x="1312" y="433" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1605284809336" />
     <state x="1537" y="614" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601565340854">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>

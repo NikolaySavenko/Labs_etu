@@ -1,0 +1,13 @@
+function main() {
+	input(splitters, string, neededLen)
+	i = 0, count = 0, lastSplit = 0
+	for (i = 0; i<=length of string; i++) {
+		if (splitters has index of string[i] || string[i]=='\0') {
+			if (i-lastSplit== neededLen) {
+				count++
+			}
+			lastSplit = i + 1
+		}
+	}
+	output(count)
+}

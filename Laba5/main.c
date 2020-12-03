@@ -3,6 +3,7 @@
 #include <string.h>
 #define MAX_STRING_LEN 128
 
+int new_gets(char* s, int lim);
 int main() {
 	char splitters[MAX_STRING_LEN];
 	char string[MAX_STRING_LEN];
@@ -12,11 +13,11 @@ int main() {
 	int lastSplit = 0;
 	printf("[WARNING] max string len is %d\n", MAX_STRING_LEN);
 	printf("input splitters\n");
-	scanf("%s", &splitters);
+	new_gets(splitters, MAX_STRING_LEN);
 	printf("inputted splitters: %s\n\n", splitters);
 
 	printf("input string\n");
-	scanf("%s", &string);
+	new_gets(string, MAX_STRING_LEN);
 	printf("inputted string: %s\n\n", string);
 
 	printf("input needed len\n");
@@ -35,3 +36,11 @@ int main() {
 
 	return 0;
 }
+int new_gets(char *s, int lim) {
+	char c;
+	int i;
+	for(i=0;((c=getchar())!='\n')&&(i<lim-1);i++,s++) *s=c;
+	*s='\0';
+	return i;
+}
+

@@ -4,125 +4,99 @@
 #include <ctype.h>
 
 # define MAX_STRING_LEN 300
-
-#if defined(_WIN32) || defined(__CYGWIN__)
-	# define STR_END '\r\n'
-#elif defined(__linux__)
-	# define STR_END '\n'
-#elif defined(__APPLE__) && defined(__MACH__)
-    # define STR_END '\r'
-#elif defined(unix) || defined(__unix__) || defined(__unix)
-    # define STR_END '\n'
+# define CLI_END_SYMBOL '\0'
+/*
+ * find in first lec
+ * */
+#ifdef OS_TYPE
+#define CLS system("clear")
+# define STR_END '\n'
 #else
-    #error Unknown environment!
-#endif
+#define CLS system("cls")
+# define STR_END '\r\n'
+#endif /* OS_TYPE */
+
 
 int stringCountByLen(char *string, int len);
+
 void clearWords(char *string, char *result, int n);
+
 void filterWords(char *text);
-char* readFromFile(FILE *df, int* s_count);
+
+char *readFromFile(FILE *df, int *s_count);
+
 int new_gets(char *s, int lim);
 
 int main() {
-	char state = 0;
-	int i, j, k;
-	int str_count = 1, count;
-	int tsize, cur_pos;
+	int state = 5;
+	int str_count = 1;
 	char *text = NULL;
-	char **str_arr = NULL;
-	int need_lines;
-	FILE *df;
+	int symbolsCount;
 
-	str_count = 0;
-	count = 0;
-	df = fopen("input.txt", "r");
-	puts("file");
 	do {
 		puts("1: read via CLI");
 		puts("2: read via input.txt");
-		puts("4: exit");
-		state = (char) getchar();
-
-		/*system("cls");*/
-		if (state == '1') {
+		puts("0: exit");
+		scanf("%d", &state);
+		if (state == 1) {
+			puts("Symbols count:\n");
+			scanf("%d", &symbolsCount);
+			text = (char *) malloc(symbolsCount * sizeof(char));
 			puts("Text:");
-			text  = (char *) malloc(need_lines * sizeof(char));
-			new_gets(text, MAX_STRING_LEN);
+			new_gets(text, symbolsCount);
 			puts("Source text:");
 			puts(text);
 			filterWords(text);
 			puts("Updated text:");
 			puts(text);
-		} else if (state == '2') {
+			getchar();
+		} else if (state == 2) {
 			puts("Chosen 2");
-			text = readFromFile(df, &str_count);
+			text = readFromFile(fopen("input.txt", "r"), &str_count);
 			printf("Find lines: %d %c", str_count, STR_END);
-			puts("Source text:");
-			puts(text);
+			printf("Source text: %s", text);
 			filterWords(text);
 			puts("Updated text:");
 			puts(text);
+			getchar();
+		} else if (state == 0) {
+			puts("Exit");
+			getchar();
+		} else {
+			puts("Incorrect key!");
+			getchar();
 		}
-	} while (state != '2');
+		puts("Press ENTER to continue");
+		getchar();
+		CLS;
+	} while (state != 0);
 	return 0;
 }
 
-char* readFromFile(FILE *df, int* s_count) {
-	int cur_pos, i, j, k;
-	int count = 0;
+char *readFromFile(FILE *df, int *s_count) {
+	int i;
 	char *text = NULL;
-	char **target = NULL;
-	char c0;
 	int str_count = 1;
-	long tsize;
+	long size;
 
-	fseek(df , 0 , SEEK_END);
-	tsize = ftell(df);
+	fseek(df, 0, SEEK_END);
+	size = ftell(df);
 	rewind(df);
-	text = (char *) malloc(tsize * sizeof(char));
+	text = (char *) malloc(size * sizeof(char));
 	if (text != NULL) {
-		fread(text, tsize, 1, df);
-		text[tsize - 1] = '\0';
+		fread(text, size, 1, df);
+		text[size - 1] = '\0';
 		fclose(df);
-		for (i = 0; i < tsize; i++) {
-			if (text[i] == STR_END) str_count++;
+		for (i = 0; i < size; i++) {
+			if (text[i] == STR_END) {
+				str_count++;
+			}
 		}
 		*s_count = str_count;
-		/*printf("\nNumber of strings: %d\n", str_count);
-		puts("-----------------------------");
-		puts("Processing results:");
-		puts("-----------------------------");*/
-		target = (char **) malloc(str_count * sizeof(char *));
-		/*if (target != NULL) {
-			cur_pos = 0;
-			i = 0;
-			for (k = 0; k < str_count; k++) {
-				for (i = cur_pos; text[i] != STR_END && text[i] != EOF - 3; i++) {}
-				j = i - cur_pos;
-				target[k] = (char *) malloc(j * sizeof(char));
-				if (target[k] != NULL) {
-					count++;
-					for (i = 0; i < j + 1; i++) target[k][i] = text[cur_pos + i];
-					target[k][j] = '\0';
-					cur_pos = cur_pos + i;
-				} else {
-					k = str_count;
-				}
-			}
-		} else puts("Error at memory allocation for processing!");*/
 	} else puts("Error at memory allocation for reading!");
-
-	/*for (i = 0; i < count; i++) {
-		free(str_arr[i]);
-		str_arr[i] = NULL;
-	}
-	if (str_arr != NULL) {
-		free(str_arr);
-		str_arr = NULL;
-	}*/
-	/*if (text != NULL) free(text);*/
 	return text;
 }
+
 void filterWords(char *text) {
 	int i;
 	int count = 0;
@@ -132,7 +106,6 @@ void filterWords(char *text) {
 		current = text[i];
 		if (isspace(current) || current == '\0') {
 			if (stringCountByLen(text, count) >= 2) {
-				/* AHAHAHA*/
 				clearWords(text, buffer, count);
 				strcpy(text, buffer);
 				i = -1;
@@ -143,6 +116,7 @@ void filterWords(char *text) {
 		}
 	}
 }
+
 void clearWords(char *string, char *result, int n) {
 	int i, p = 0;
 	int count = 0;
@@ -168,6 +142,7 @@ void clearWords(char *string, char *result, int n) {
 		}
 	}
 }
+
 int stringCountByLen(char *string, int len) {
 	int i, p = 0;
 	int count = 0;
@@ -185,11 +160,12 @@ int stringCountByLen(char *string, int len) {
 	}
 	return count;
 }
+
 int new_gets(char *s, int lim) {
 	char c;
 	int i;
-	for(i=0;((c=getchar())!='0')&&(i<lim-1);i++,s++) *s=c;
-	*s='\0';
+	for (i = 0; ((c = getchar()) != CLI_END_SYMBOL) && (i < lim - 1); i++, s++) *s = c;
+	*s = '\0';
 	return i;
 }
 

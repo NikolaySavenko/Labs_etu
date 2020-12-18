@@ -2,9 +2,9 @@
 #include <stdio.h>
 
 int main() {
-	char A = -2;
+    char a = 'P';
+    a -= 4;
 
-	/*printf("%x\n", A);
-	printf("%x\n", B);*/
-	printf("%d", A << 3);
+	printf("%c", a);
+	return 0;
 }

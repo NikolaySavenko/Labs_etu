@@ -4,17 +4,17 @@
 #include <ctype.h>
 
 # define MAX_STRING_LEN 300
-# define CLI_END_SYMBOL '\0'
-/*
- * find in first lec
- * */
-#ifdef OS_TYPE
+# define CLI_END_SYMBOL '0'
+
+#if defined(__linux) || defined(__linux__)
 #define CLS system("clear")
-# define STR_END '\n'
+#define STR_END '\n'
+
 #else
 #define CLS system("cls")
-# define STR_END '\r\n'
-#endif /* OS_TYPE */
+#define STR_END '\r\n'
+
+#endif
 
 
 int stringCountByLen(char *string, int len);
@@ -25,46 +25,61 @@ void filterWords(char *text);
 
 char *readFromFile(FILE *df, int *s_count);
 
-int new_gets(char *s, int lim);
+int new_gets(char *s, int lim, char endSymbol);
 
 int main() {
-	int state = 5;
+	int state;
 	int str_count = 1;
 	char *text = NULL;
+	char endSymbol;
 	int symbolsCount;
 
 	do {
 		puts("1: read via CLI");
 		puts("2: read via input.txt");
+		puts("3: About");
 		puts("0: exit");
 		scanf("%d", &state);
-		if (state == 1) {
-			puts("Symbols count:\n");
-			scanf("%d", &symbolsCount);
-			text = (char *) malloc(symbolsCount * sizeof(char));
-			puts("Text:");
-			new_gets(text, symbolsCount);
-			puts("Source text:");
-			puts(text);
-			filterWords(text);
-			puts("Updated text:");
-			puts(text);
-			getchar();
-		} else if (state == 2) {
-			puts("Chosen 2");
-			text = readFromFile(fopen("input.txt", "r"), &str_count);
-			printf("Find lines: %d %c", str_count, STR_END);
-			printf("Source text: %s", text);
-			filterWords(text);
-			puts("Updated text:");
-			puts(text);
-			getchar();
-		} else if (state == 0) {
-			puts("Exit");
-			getchar();
-		} else {
-			puts("Incorrect key!");
-			getchar();
+
+		switch (state) {
+			case 1:
+				puts("Symbols count:\n");
+				scanf("%d", &symbolsCount);
+				puts("'end' symbol:");
+				scanf("%c", &endSymbol);
+				text = (char *) malloc(symbolsCount * sizeof(char));
+				puts("Input text:");
+				new_gets(text, symbolsCount, endSymbol);
+				puts("Source text:");
+				puts(text);
+				filterWords(text);
+				puts("Updated text:");
+				puts(text);
+				getchar();
+				break;
+			case 2:
+				puts("Chosen 2");
+				text = readFromFile(fopen("input.txt", "r"), &str_count);
+				printf("Find lines: %d %c", str_count, STR_END);
+				printf("Source text: %s", text);
+				filterWords(text);
+				puts("Updated text:");
+				puts(text);
+				getchar();
+				break;
+			case 3:
+				puts("About:");
+				puts("Text filter for FKTI");
+				getchar();
+				break;
+			case 0:
+				puts("Exit detected");
+				getchar();
+				break;
+			default:
+				puts("Incorrect key!");
+				getchar();
+				break;
 		}
 		puts("Press ENTER to continue");
 		getchar();
@@ -161,11 +176,10 @@ int stringCountByLen(char *string, int len) {
 	return count;
 }
 
-int new_gets(char *s, int lim) {
+int new_gets(char *s, int lim, char endSymbol) {
 	char c;
 	int i;
-	for (i = 0; ((c = getchar()) != CLI_END_SYMBOL) && (i < lim - 1); i++, s++) *s = c;
+	for (i = 0; ((c = getchar()) != endSymbol) && (i < lim - 1); i++, s++) *s = c;
 	*s = '\0';
 	return i;
 }
-

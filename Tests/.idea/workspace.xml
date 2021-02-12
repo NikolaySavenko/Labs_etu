@@ -19,24 +19,20 @@
     <select />
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
-    <generated />
+    <generated>
+      <config projectName="Tests" targetName="Tests" />
+    </generated>
   </component>
   <component name="CMakeSettings">
     <configurations>
-      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" ENABLED="true" />
     </configurations>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82b1d900-1016-4780-8e74-9f7580cd9ede" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Kursach1/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Kursach1/input.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Kursach1/main.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Kursach1/main.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Kursach1/main.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Laba4.1/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laba4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laba4/cmake-build-debug/Laba4.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba4/cmake-build-debug/Laba4.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laba4/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba4/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Tests.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Tests.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests.layout" beforeDir="false" afterPath="$PROJECT_DIR$/Tests.layout" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/Tests.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/Tests.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
@@ -50,6 +46,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -63,7 +60,19 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Laba5" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Tests" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tests" TARGET_NAME="Tests" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Tests" RUN_TARGET_NAME="Tests">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -76,6 +85,9 @@
       <workItem from="1602968685645" duration="582000" />
       <workItem from="1602969308241" duration="38000" />
       <workItem from="1606062941974" duration="1000" />
+      <workItem from="1611235910036" duration="38000" />
+      <workItem from="1611308712874" duration="1100000" />
+      <workItem from="1612342751611" duration="23000" />
     </task>
     <servers />
   </component>
@@ -93,15 +105,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="314" y="358" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602969228648">
-      <screen x="0" y="0" width="3440" height="1400" />
-    </state>
-    <state x="314" y="358" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1602969228648" />
-    <state x="640" y="458" key="FileChooserDialogImpl" timestamp="1602969344747">
-      <screen x="0" y="0" width="3440" height="1400" />
-    </state>
-    <state x="640" y="458" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1602969344747" />
   </component>
 </project>

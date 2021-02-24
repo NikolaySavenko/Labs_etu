@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAXLEN 128
+#define MAX_LEN 256
 
 struct GROUP2 {
 	char *Name;
@@ -12,51 +12,86 @@ struct GROUP2 {
 typedef struct GROUP2 stud;
 
 void sort_rating(struct GROUP2 *str0, int n);
+
 char **simple_split(char *str, int length, char sep);
+
 void ClearStringArray(char **str, int n);
 
 int main() {
 	stud *studs = NULL;
 	char **s2 = NULL;
-	char s1[MAXLEN];
+	char s1[MAX_LEN];
+	char *string = NULL;
 	int slen, i, j, count;
-	int nameLen, success;
+	int success;
 	char sep;
 	FILE *df;
 	success = 0;
 
-	df = fopen("data.csv", "r");
-	if (df != NULL) {
-		puts("Input students count:");
-		scanf("%d", &count);
-		puts("Students:");
-		sep = ';';
-		studs = (stud *) malloc((count) * sizeof(stud));
-		if (studs != NULL) {
-			for (i = 0; i < count; i++) {
-				fgets(s1, MAXLEN, df);
-				slen = strlen(s1);
-				s1[slen - 1] = '\0';
-				slen = strlen(s1);
+	if ((string = (char *) malloc(MAX_LEN * sizeof(char) + 1)) != NULL) {
+		if ((df = fopen("data.csv", "r")) != NULL) {
+			sep = ';';
+			count = 0;
+			while (fgets(string, MAX_LEN, df)) {
+				count++;
+			}
+			printf("Finded %d students:\n", count);
 
-				s2 = simple_split(s1, slen, sep);
-				if (s2 != NULL) {
-					for (j = 0; j < 7; j++) {
-						if (s2[j] == NULL) {
-							for (i = j - 1; j >= 0; j--) free(s2[i]);
-							i = count;
-							j = 7;
+			studs = (stud *) malloc(count * sizeof(stud));
+			fseek (df, 0, SEEK_SET);
+			if (studs != NULL) {
+				for (i = 0; i < count; i++) {
+					fgets(s1, MAX_LEN, df);
+					slen = strlen(s1);
+					s1[slen - 1] = '\0';
+					slen = strlen(s1);
+
+					s2 = simple_split(s1, slen, sep);
+					if (s2 != NULL) {
+						for (j = 0; j < 7; j++) {
+							if (s2[j] == NULL) {
+								for (i = j - 1; j >= 0; j--) free(s2[i]);
+								i = count;
+								j = 7;
+							}
 						}
-					}
-					if (i != count) {
-						studs[i].Name = s2[0];
-						studs[i].DAT[0] = atoi(s2[1]);
-						studs[i].DAT[1] = atoi(s2[2]);
-						studs[i].DAT[2] = atoi(s2[3]);
+						if (i != count) {
+							studs[i].Name = s2[0];
+							studs[i].DAT[0] = atoi(s2[1]);
+							studs[i].DAT[1] = atoi(s2[2]);
+							studs[i].DAT[2] = atoi(s2[3]);
 
-						studs[i].SES[0] = atoi(s2[4]);
-						studs[i].SES[1] = atoi(s2[5]);
-						studs[i].SES[2] = atoi(s2[6]);
+							studs[i].SES[0] = atoi(s2[4]);
+							studs[i].SES[1] = atoi(s2[5]);
+							studs[i].SES[2] = atoi(s2[6]);
+							printf("Name: %s Dat %d.%d.%d SES: %d, %d, %d\n ",
+								   studs[i].Name,
+								   studs[i].DAT[0],
+								   studs[i].DAT[1],
+								   studs[i].DAT[2],
+								   studs[i].SES[0],
+								   studs[i].SES[1],
+								   studs[i].SES[2]
+							);
+							success = 1;
+							for (j = 1; j < 7; j++) free(s2[j]);
+						} else puts("Out if memory! Program terminated");
+					} else {
+						puts("Out if memory! Program terminated");
+						ClearStringArray(s2, 7);
+					}
+				}
+				fclose(df);
+			} else puts("Out if memory! Program terminated");
+
+			if (success == 1) {
+				puts("Output:");
+				sort_rating(studs, count);
+				for (i = 0; i < count; i++) {
+					if (studs[i].DAT[0] > 1997 || (
+							studs[i].DAT[0] == 1997 && studs[i].DAT[2] >= 1
+					)) {
+						success = 2;
 						printf("Name: %s Dat %d.%d.%d SES: %d, %d, %d\n ",
 							   studs[i].Name,
 							   studs[i].DAT[0],
@@ -66,39 +101,17 @@ int main() {
 							   studs[i].SES[1],
 							   studs[i].SES[2]
 						);
-						success = 1;
-						for (j = 1; j < 7; j++) free(s2[j]);
-					} else puts("Out if memory! Program terminated");
-				} else {
-					puts("Out if memory! Program terminated");
-					ClearStringArray(s2, 7);
+					}
+					free(studs[i].Name);
 				}
-			}
-			fclose(df);
-		} else puts("Out if memory! Program terminated");
-
-		if (success == 1) {
-			puts("Output:");
-			sort_rating(studs, count);
-			for (i = 0; i < count; i++) {
-				if (studs[i].DAT[0] > 1997 || (
-						studs[i].DAT[0] == 1997 && studs[i].DAT[2] >= 1
-				)) {
-					printf("Name: %s Dat %d.%d.%d SES: %d, %d, %d\n ",
-						   studs[i].Name,
-						   studs[i].DAT[0],
-						   studs[i].DAT[1],
-						   studs[i].DAT[2],
-						   studs[i].SES[0],
-						   studs[i].SES[1],
-						   studs[i].SES[2]
-					);
+				if (success == 1) {
+					puts("Output is empty");
 				}
-				free(studs[i].Name);
+				free(studs);
 			}
-			free(studs);
 		}
 	}
+
 	return 0;
 }
 
@@ -154,7 +167,7 @@ char **simple_split(char *str, int length, char sep) {
 
 void sort_rating(struct GROUP2 *str0, int n) {
 	struct GROUP2 tmp_struct;
-	int i, j, sum1, sum2;
+	int i, j;
 
 	for (i = 0; i < n; i++) {
 		tmp_struct = str0[i];

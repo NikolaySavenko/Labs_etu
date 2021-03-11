@@ -193,10 +193,10 @@ int stringCountByLen(char *string, int len) {
 	return count;
 }
 
-int new_gets(char *s, int lim, char endSymbol) {
-	char c;
-	int i;
-	for (i = 0; ((c = getchar()) != endSymbol) && (i < lim - 1); i++, s++) *s = c;
-	*s = '\0';
-	return i;
-}
+	int new_gets(char *s, int lim, char endSymbol) {
+		char c;
+		int i;
+		for (i = 0; ((c = getchar()) != endSymbol) && (i < lim - 1); i++, s++) *s = c;
+		*s = '\0';
+		return i;
+	}

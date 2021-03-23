@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+#define MAX_NAME_LEN 128
 
 struct badge {
+	char name[MAX_NAME_LEN];
 	char color;
 	char rating;
 };
@@ -22,10 +26,13 @@ int addDuck(struct DUCKDUCK duckToAdd, duck **duckArray, int len);
 int main() {
 	int i, len = 0;
 	int shouldContinue = 1;
+	char buffer[MAX_NAME_LEN];
+	int bufLen;
 	struct badge duckBadge;
 	struct DUCKDUCK newDuck;
 	duck *ducks = getUserDucks(&len);
 
+	strcpy(duckBadge.name, "program duck");
 	duckBadge.color = 'g';
 	duckBadge.rating = 'A';
 
@@ -44,6 +51,14 @@ int main() {
 		struct badge duckBadgeNew;
 		struct DUCKDUCK newCoolDuck;
 		printf("Duck number %d\n", len + 1);
+
+		/*new field: name*/
+		printf("DUCKDUCK badge name (max=%d):\n", MAX_NAME_LEN);
+		fgets(buffer, MAX_NAME_LEN, stdin);
+		bufLen = strlen(buffer);
+		buffer[bufLen - 1] = '\0';
+		strcpy(duckBadgeNew.name, buffer);
+
 		puts("DUCKDUCK badge color (char):");
 		scanf("%c", &duckBadgeNew.color);
 		getchar();
@@ -79,27 +94,38 @@ int main() {
 
 	printf("All duck ready %d\n", len);
 	for (i = 0; i < len; i++) {
-		printf("rubber %c %c %d %d %f %c\n",
+		printf("rubber %c %c %s %d %d %f %c\n",
 			   ducks[i].ownBadge.color,
 			   ducks[i].ownBadge.rating,
+			   ducks[i].ownBadge.name,
 			   ducks[i].pawsCount,
 			   ducks[i].gender,
 			   ducks[i].weight,
 			   ducks[i].favoriteKey
 		);
 	}
+
 	return 0;
 }
 
 duck *getUserDucks(int *len) {
-	duck* items = NULL;/*(duck *)malloc(sizeof (duck));*/
+	duck *items = NULL;/*(duck *)malloc(sizeof (duck));*/
 	int shouldContinue = 1;
-	int length = 0;
 	puts("Forming initial array");
 	while (shouldContinue) {
 		struct badge duckBadge;
 		struct DUCKDUCK newDuck;
-		printf("Duck number %d\n", length + 1);
+		char buffer[MAX_NAME_LEN];
+		int bufLen;
+		printf("Duck number %d\n", *len + 1);
+
+		/*new field: name*/
+		printf("DUCKDUCK badge name (max=%d):\n", MAX_NAME_LEN);
+		fgets(buffer, MAX_NAME_LEN, stdin);
+		bufLen=strlen(buffer);
+		buffer[bufLen-1]='\0';
+		strcpy(duckBadge.name, buffer);
+
 		puts("DUCKDUCK badge color (char):");
 		scanf("%c", &duckBadge.color);
 		getchar();
@@ -130,15 +156,15 @@ duck *getUserDucks(int *len) {
 		scanf("%d", &shouldContinue);
 		getchar();
 
-		length = addDuck(newDuck, &items, length);
+		*len = addDuck(newDuck, &items, *len);
 	}
-	*len = length;
 	return items;
 }
 
 int addDuck(struct DUCKDUCK duckToAdd, duck **duckArray, int len) {
-	*duckArray = (duck *)realloc(*duckArray, (len + 1) * sizeof(duck));
+	*duckArray = (duck *) realloc(*duckArray, (len + 1) * sizeof(duck));
 	/*duckArray[len] = &duckToAdd;*/
+	strcpy((*duckArray)[len].ownBadge.name, duckToAdd.ownBadge.name);
 	(*duckArray)[len].ownBadge.color = duckToAdd.ownBadge.color;
 	(*duckArray)[len].ownBadge.rating = duckToAdd.ownBadge.rating;
 	(*duckArray)[len].weight = duckToAdd.weight;

@@ -23,10 +23,11 @@ duck *getUserDucks(int *len);
 
 int addDuck(struct DUCKDUCK duckToAdd, duck **duckArray, int len);
 
-duck *sortByLexicographicOrder(duck **ducks, int n);
+void sortByLexicographicOrder(duck **ducks, int n);
+void sortByWeightOrder(duck **ducks, int n);
 
 int main() {
-	int i, len = 0;
+	int i, choosenEven, len = 0;
 	int shouldContinue = 1;
 	char buffer[MAX_NAME_LEN];
 	int bufLen;
@@ -96,7 +97,7 @@ int main() {
 
 	printf("All duck ready %d\n", len);
 	for (i = 0; i < len; i++) {
-		printf("rubber %c %c %s %d %d %f %c\n",
+		printf("duck %c %c %s %d %d %f %c\n",
 			   ducks[i].ownBadge.color,
 			   ducks[i].ownBadge.rating,
 			   ducks[i].ownBadge.name,
@@ -106,10 +107,12 @@ int main() {
 			   ducks[i].favoriteKey
 		);
 	}
-	ducks = sortByLexicographicOrder(&ducks, len);
-
+	puts("Sorting by name...");
+	sortByLexicographicOrder(&ducks, len);
+	puts("Sorted:");
 	for (i = 0; i < len; i++) {
-		printf("rubber %c %c %s %d %d %f %c\n",
+		printf("#%d duck %c %c %s %d %d %f %c\n",
+				i,
 			   ducks[i].ownBadge.color,
 			   ducks[i].ownBadge.rating,
 			   ducks[i].ownBadge.name,
@@ -118,6 +121,38 @@ int main() {
 			   ducks[i].weight,
 			   ducks[i].favoriteKey
 		);
+	}
+
+	puts("Sorting by weight...");
+	sortByWeightOrder(&ducks, len);
+	puts("Sorted:");
+	for (i = 0; i < len; i++) {
+		printf("#%d duck %c %c %s %d %d %f %c\n",
+			   i,
+			   ducks[i].ownBadge.color,
+			   ducks[i].ownBadge.rating,
+			   ducks[i].ownBadge.name,
+			   ducks[i].pawsCount,
+			   ducks[i].gender,
+			   ducks[i].weight,
+			   ducks[i].favoriteKey
+		);
+	}
+	puts("Get even lines: (1 - not even; 0 - even)");
+	scanf("%d", &choosenEven);
+	for (i = 0; i < len; i++) {
+		if (i % 2 == choosenEven) {
+			printf("#%d duck %c %c %s %d %d %f %c\n",
+				   i,
+				   ducks[i].ownBadge.color,
+				   ducks[i].ownBadge.rating,
+				   ducks[i].ownBadge.name,
+				   ducks[i].pawsCount,
+				   ducks[i].gender,
+				   ducks[i].weight,
+				   ducks[i].favoriteKey
+			);
+		}
 	}
 	return 0;
 }
@@ -136,8 +171,8 @@ duck *getUserDucks(int *len) {
 		/*new field: name*/
 		printf("DUCKDUCK badge name (lowercase only and MAX_NAME_LEN=%d):\n", MAX_NAME_LEN);
 		fgets(buffer, MAX_NAME_LEN, stdin);
-		bufLen=strlen(buffer);
-		buffer[bufLen-1]='\0';
+		bufLen = strlen(buffer);
+		buffer[bufLen - 1] = '\0';
 		strcpy(duckBadge.name, buffer);
 
 		puts("DUCKDUCK badge color (char):");
@@ -188,40 +223,33 @@ int addDuck(struct DUCKDUCK duckToAdd, duck **duckArray, int len) {
 	return len + 1;
 }
 
-duck *sortByLexicographicOrder(duck **ducks, int n)
-{
-	int location;
-	duck newElement;
-	int i;
-	for (i = 1; i < n; i++)
-	{
-		strcpy(newElement.ownBadge.name, (*ducks[i]).ownBadge.name);
-		newElement.ownBadge.rating = (*ducks[i]).ownBadge.rating;
-		newElement.ownBadge.color = (*ducks[i]).ownBadge.color;
-		newElement.weight = (*ducks[i]).weight;
-		newElement.favoriteKey = (*ducks[i]).favoriteKey;
-		newElement.gender = (*ducks[i]).gender;
-		newElement.pawsCount = (*ducks[i]).pawsCount;
-		location = i - 1;
-		while(location >= 0 && strcmp((*ducks[location]).ownBadge.name, newElement.ownBadge.name) > 0)
-		{
-			strcpy((*ducks[location+1]).ownBadge.name, (*ducks[location]).ownBadge.name);
-			(*ducks[location+1]).ownBadge.color = (*ducks[location]).ownBadge.color;
-			(*ducks[location+1]).ownBadge.rating = (*ducks[location]).ownBadge.rating;
-			(*ducks[location+1]).weight = (*ducks[location]).weight;
-			(*ducks[location+1]).favoriteKey = (*ducks[location]).favoriteKey;
-			(*ducks[location+1]).gender = (*ducks[location]).gender;
-			(*ducks[location+1]).pawsCount = (*ducks[location]).pawsCount;
-			location = location - 1;
-		}
-		strcpy((*ducks[location+1]).ownBadge.name, newElement.ownBadge.name);
-		(*ducks[location+1]).ownBadge.color = newElement.ownBadge.color;
-		(*ducks[location+1]).ownBadge.rating = newElement.ownBadge.rating;
-		(*ducks[location+1]).weight = newElement.weight;
-		(*ducks[location+1]).favoriteKey = newElement.favoriteKey;
-		(*ducks[location+1]).gender = newElement.gender;
-		(*ducks[location+1]).pawsCount = newElement.pawsCount;
-	}
 
-	return *ducks;
+void sortByLexicographicOrder(duck **ducks, int n) {
+	duck tmp;
+	int i, j;
+	for (i = 0; i < n; i = i + 1) {
+		tmp = (*ducks)[i];
+		for (j = i - 1;
+			 (j >= 0) &&
+			 (0 > strcmp(
+					 (*ducks)[j].ownBadge.name,
+					 tmp.ownBadge.name)); j--) {
+			(*ducks)[j + 1] = (*ducks)[j];
+		}
+		(*ducks)[j + 1] = tmp;
+	}
+}
+
+void sortByWeightOrder(duck **ducks, int n) {
+	duck tmp;
+	int i, j;
+	for (i = 0; i < n; i = i + 1) {
+		tmp = (*ducks)[i];
+		for (j = i - 1;
+			 (j >= 0) &&
+			 (*ducks)[j].weight > tmp.weight; j--) {
+			(*ducks)[j + 1] = (*ducks)[j];
+		}
+		(*ducks)[j + 1] = tmp;
+	}
 }

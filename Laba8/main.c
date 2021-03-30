@@ -23,17 +23,15 @@ typedef struct LHead {
 	duck *last;
 } LHead;
 
-void sort_weight(struct DUCKDUCK *str0, int n);
-
 char **simple_split(char *str, int length, char sep);
 
 void ClearStringArray(char **str, int n);
 
 void delete_node(LHead *my_head, duck *current_node);
 
-int new_gets(char *s, int lim, char endSymbol);
+void clear_list(LHead *my_head);
 
-int has_substring(char *str0, char *str1);
+void delete_target(LHead *my_head);
 
 int main() {
 	duck *duckPtr = NULL;
@@ -41,11 +39,8 @@ int main() {
 	char **s2 = NULL;
 	char *string = NULL;
 	int slen, i, j, count;
-	int success;
-	int choosen_value;
 	char sep;
 	FILE *df;
-	success = 0;
 	head.count = 0;
 	head.first = NULL;
 	head.last = NULL;
@@ -58,9 +53,7 @@ int main() {
 				count++;
 			}
 			printf("Loaded %d duckPtr:\n", count);
-
 			fseek(df, 0, SEEK_SET);
-
 			for (i = 0; i < count; i++) {
 				duckPtr = (duck *) malloc(sizeof(duck));
 				if (duckPtr != NULL) {
@@ -88,6 +81,7 @@ int main() {
 
 							duckPtr->paws_count = atoi(s2[6]);
 							duckPtr->wings_count = atoi(s2[7]);
+							duckPtr->next = NULL;
 
 							printf("Source duck #%d name: %s type %s pos: %d:%d w: %f h: %f paws %d wings %d\n ",
 								   i,
@@ -100,7 +94,6 @@ int main() {
 								   duckPtr->paws_count,
 								   duckPtr->wings_count
 							);
-							success = 1;
 
 							if (head.first == NULL) {
 								head.first = duckPtr;
@@ -112,11 +105,18 @@ int main() {
 							}
 							head.count++;
 							for (j = 2; j < 8; j++) free(s2[j]);
+						} else {
+							puts("mem alloc err");
+							clear_list(&head);
 						}
-					} else puts("Out if memory! Program terminated");
+					} else {
+						puts("Out if memory! Program terminated");
+						clear_list(&head);
+					}
 				} else {
 					puts("Out if memory! Program terminated");
 					ClearStringArray(s2, 8);
+					clear_list(&head);
 				}
 			}
 			fclose(df);
@@ -136,43 +136,9 @@ int main() {
 				duckPtr = duckPtr->next;
 			}
 			/*task solution*/
-			puts("Delete element with X position:");
-			scanf("%d", &choosen_value);
-			duckPtr = head.first;
-			puts("Solution");
-			while (duckPtr != NULL) {
-				if (duckPtr->position[0] == choosen_value) {
-					if (duckPtr->next == NULL) {
-						puts("Cant perform action");
-						duckPtr = NULL;
-					} else {
-						delete_node(&head, duckPtr->next);
-						success = 2;
-						duckPtr = NULL;
-					}
-				} else duckPtr = duckPtr->next;
-			}
-			if (success != 2) puts("No elements found");
-
-			duckPtr = head.first;
-			puts("Finished list:");
-			while (duckPtr != NULL) {
-				printf("Source duck name: %s type %s pos: %d:%d w: %f h: %f paws %d wings %d\n ",
-					   duckPtr->name,
-					   duckPtr->type,
-					   duckPtr->position[0],
-					   duckPtr->position[1],
-					   duckPtr->weight,
-					   duckPtr->height,
-					   duckPtr->paws_count,
-					   duckPtr->wings_count
-				);
-				duckPtr = duckPtr->next;
-			}
+			delete_target(&head);
 		}
-	}
-
-	/*clear ducksList*/
+	} else puts("memory alloc error");
 
 	return 0;
 }
@@ -225,27 +191,6 @@ char **simple_split(char *str, int length, char sep) {
 	return str_array;
 }
 
-void sort_weight(struct DUCKDUCK *str0, int n) {
-	struct DUCKDUCK tmp_struct;
-	int i, j;
-
-	for (i = 0; i < n; i++) {
-		tmp_struct = str0[i];
-		for (j = i - 1; j >= 0 && str0[j].weight > tmp_struct.weight; j--) {
-			str0[j + 1] = str0[j];
-		}
-		str0[j + 1] = tmp_struct;
-	}
-}
-
-int new_gets(char *s, int lim, char endSymbol) {
-	char c;
-	int i;
-	for (i = 0; ((c = getchar()) != endSymbol) && (i < lim - 1); i++, s++) *s = c;
-	*s = '\0';
-	return i;
-}
-
 void delete_node(LHead *my_head, duck *current_node) {
 	duck *q, *q1;
 	q = my_head->first;
@@ -265,4 +210,56 @@ void delete_node(LHead *my_head, duck *current_node) {
 		}
 	}
 	my_head->count--;
+}
+
+void clear_list(LHead *my_head)
+{
+	duck *q,*q1;
+	q=my_head->first;
+	while(q!=NULL)
+	{
+		q1=q->next;
+		free(q);
+		q=q1;
+	}
+}
+
+void delete_target(LHead *my_head) {
+	duck *duckPtr = NULL;
+	int choosen_value;
+	int success = 0;
+	puts("Delete element with X position:");
+	scanf("%d", &choosen_value);
+	duckPtr = my_head->first;
+	puts("Solution");
+	while (duckPtr != NULL) {
+		if (duckPtr->position[0] == choosen_value) {
+			if (duckPtr->next == NULL) {
+				puts("Cant perform action");
+				duckPtr = NULL;
+			} else {
+				delete_node(my_head, duckPtr->next);
+				success = 2;
+				duckPtr = NULL;
+			}
+		} else duckPtr = duckPtr->next;
+	}
+	if (success != 2) puts("No elements found");
+
+	duckPtr = my_head->first;
+	puts("Finished list:");
+	while (duckPtr != NULL) {
+		printf("Source duck name: %s type %s pos: %d:%d w: %f h: %f paws %d wings %d\n ",
+			   duckPtr->name,
+			   duckPtr->type,
+			   duckPtr->position[0],
+			   duckPtr->position[1],
+			   duckPtr->weight,
+			   duckPtr->height,
+			   duckPtr->paws_count,
+			   duckPtr->wings_count
+		);
+		duckPtr = duckPtr->next;
+	}
+	clear_list(my_head);
 }

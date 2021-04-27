@@ -82,8 +82,20 @@ int main() {
 				}
 			}
 			fclose(df);
+			namePtr = head.first;
+			i = 0;
+			puts("Source list:");
+			while (i < head.count) {
+				puts(namePtr->name);
+				namePtr = namePtr->next;
+				i++;
+			}
 			/*task solution*/
-			delete_target(&head);
+			puts("");
+			puts("Want to delete?(y/n)");
+			if (getchar() == 'y'){
+				delete_target(&head);
+			}
 		}
 	} else puts("memory alloc error");
 
@@ -190,13 +202,15 @@ void add_node(LHead *my_head, duckName *new_node)
 			my_head->first=new_node;
 			my_head->last=new_node;
 			new_node->next=my_head->first;
+			new_node->id = 0;
 		}
 		else
 		{
 			new_node->id=my_head->count;
 			my_head->count++;
-			new_node->next=q;
-			my_head->first=new_node;
+			new_node->next=my_head->first;
+			my_head->last->next = new_node;
+			my_head->last=new_node;
 		}
 	}
 }

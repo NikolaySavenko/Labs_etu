@@ -6,6 +6,15 @@
 #define MAX_LEN 256
 #define MAX_SUBSTRING_LEN 64
 
+# define MAX_STRING_LEN 300
+#define STR_END '\n'
+
+#if defined(__linux) || defined(__linux__)
+#define CLS system("clear")
+#else
+#define CLS system("cls")
+#endif
+
 typedef struct DUCKDUCK {
 	char *name;
 	char *type;
@@ -16,6 +25,12 @@ typedef struct DUCKDUCK {
 	int wings_count;
 } duck;
 
+void show_info();
+
+int load_data(duck **ducksDest);
+
+int add_data(duck **ducks, int count);
+
 void sort_weight(struct DUCKDUCK *str0, int n);
 
 char **simple_split(char *str, int length, char sep);
@@ -24,178 +39,76 @@ void ClearStringArray(char **str, int n);
 
 int new_gets(char *s, int lim, char endSymbol);
 
-int has_substring(char *str0, char *str1);
+void show_data(duck **ducks, int count);
 
 int main() {
 	duck *ducks = NULL;
-	char **s2 = NULL;
-	char *string = NULL;
+	int ducks_count;
 	char substring[MAX_LEN];
-	int slen, i, j, count;
 	int success;
+	int state;
 	int choosen_type;
-	char sep;
-	FILE *df;
-	int symbolsCount;
 	success = 0;
+	ducks_count = load_data(&ducks);
+	if (ducks_count >= 0) {
+		do {
+			puts("0: INFO");
+			puts("1: ADD");
+			puts("2: EDIT");
+			puts("3: DELETE");
+			puts("4: SHOW");
+			puts("5: SEARCH");
+			puts("6: SORT");
+			puts("7: EXIT");
+			scanf("%d", &state);
 
-	if ((string = (char *) malloc(MAX_LEN * sizeof(char) + 1)) != NULL) {
-		if ((df = fopen("data.csv", "r")) != NULL) {
-			sep = ';';
-			count = 0;
-			while (fgets(string, MAX_LEN, df)) {
-				count++;
-			}
-			printf("Loaded %d ducks:\n", count);
-
-			ducks = (duck *) malloc(count * sizeof(duck));
-			fseek(df, 0, SEEK_SET);
-			if (ducks != NULL) {
-				for (i = 0; i < count; i++) {
-					fgets(string, MAX_LEN, df);
-					slen = strlen(string);
-					string[slen - 1] = '\0';
-					slen = strlen(string);
-
-					s2 = simple_split(string, slen, sep);
-					if (s2 != NULL) {
-						for (j = 0; j < 7; j++) {
-							if (s2[j] == NULL) {
-								for (i = j - 1; j >= 0; j--) free(s2[i]);
-								i = count;
-								j = 7;
-							}
-						}
-						if (i != count) {
-							ducks[i].name = s2[0];
-							ducks[i].type = s2[1];
-							ducks[i].position[0] = atoi(s2[2]);
-							ducks[i].position[1] = atoi(s2[3]);
-							ducks[i].weight = atof(s2[4]);
-							ducks[i].height = atof(s2[5]);
-
-							ducks[i].paws_count = atoi(s2[6]);
-							ducks[i].wings_count = atoi(s2[7]);
-
-							printf("Source duck #%d name: %s type %s pos: %d:%d w: %f h: %f paws %d wings %d\n ",
-								   i,
-								   ducks[i].name,
-								   ducks[i].type,
-								   ducks[i].position[0],
-								   ducks[i].position[1],
-								   ducks[i].weight,
-								   ducks[i].height,
-								   ducks[i].paws_count,
-								   ducks[i].wings_count
-							);
-							success = 1;
-							for (j = 2; j < 8; j++) free(s2[j]);
-						} else puts("Out if memory! Program terminated");
-					} else {
-						puts("Out if memory! Program terminated");
-						ClearStringArray(s2, 8);
-					}
-				}
-				fclose(df);
-			} else puts("Out if memory! Program terminated");
-			/*From keyboard*/
-			puts("Wants to add more?");
-			puts("1 - yes; any key - no; ");
-			while (getchar() == '1') {
-				getchar();
-				/*start*/
-				ducks = (duck *) realloc(ducks, (count + 1) * sizeof(duck));
-				puts("Input symbols count in name");
-				scanf("%d", &symbolsCount);
-				getchar();
-				ducks[count].name = (char *) malloc(symbolsCount * sizeof(char));
-
-				puts("Input symbols count in type");
-				scanf("%d", &symbolsCount);
-				getchar();
-				ducks[count].type = (char *) malloc(symbolsCount * sizeof(char));
-
-				if (ducks[count].name == NULL || ducks[count].type == NULL) {
-					success = 0;
-					puts("memory allocation error");
-				} else {
-					puts("Adding new duck with name:");
-					new_gets(ducks[count].name, MAX_LEN, '\n');
-
-					puts("With type:");
-					new_gets(ducks[count].type, MAX_LEN, '\n');
-
-					puts("Pos X of duck: ");
-					scanf("%d", &ducks[count].position[0]);
-					puts("Pos Y of duck: ");
-					scanf("%d", &ducks[count].position[1]);
-					puts("Weight of duck: ");
-					scanf("%f", &ducks[count].weight);
-					puts("Height of duck: ");
-					scanf("%f", &ducks[count].height);
-					puts("Paws count of duck: ");
-					scanf("%d", &ducks[count].paws_count);
-					puts("Wings count of duck: ");
-					scanf("%d", &ducks[count].wings_count);
+			switch (state) {
+				case 0:
+					CLS;
+					show_info();
 					getchar();
-
-					printf("name: %s type %s pos: %d:%d w: %f h: %f paws %d wings %d\n ",
-						   ducks[count].name,
-						   ducks[count].type,
-						   ducks[count].position[0],
-						   ducks[count].position[1],
-						   ducks[count].weight,
-						   ducks[count].height,
-						   ducks[count].paws_count,
-						   ducks[count].wings_count
-					);
-					/*end*/
-					count++;
-					puts("Wants to add more?");
-					puts("1 - yes; any key - no; ");
-				}
+					break;
+				case 1:
+					CLS;
+					ducks_count = add_data(&ducks, ducks_count);
+					getchar();
+					break;
+				case 2:
+					CLS;
+					puts("EDIT");
+					getchar();
+					break;
+				case 3:
+					puts("DELETE");
+					getchar();
+					break;
+				case 4:
+					puts("SHOW");
+					show_data(&ducks, ducks_count);
+					getchar();
+					break;
+				case 5:
+					puts("SEARCH");
+					getchar();
+					break;
+				case 6:
+					puts("SORT");
+					getchar();
+					break;
+				case 7:
+					puts("EXIT");
+					getchar();
+					break;
+				default:
+					puts("Incorrect key!");
+					getchar();
+					break;
 			}
-
-			/*Choose from substring*/
-			if (success == 1) {
-				puts("Find substring in:");
-				puts("1 - name; 2 - type");
-				scanf("%d", &choosen_type);
-				getchar();
-
-				printf("Input substring(max len: %d):", MAX_SUBSTRING_LEN);
-				new_gets(substring, MAX_SUBSTRING_LEN, '\n');
-				puts("Output:");
-				sort_weight(ducks, count);
-				for (i = 0; i < count; i++) {
-					if (choosen_type == 1) {
-						success = has_substring(ducks[i].name, substring) + 10;
-					} else {
-						success = has_substring(ducks[i].type, substring) + 10;
-					}
-					if (success > 10) {
-						printf("name: %s type %s pos: %d:%d w: %f h: %f paws %d wings %d\n ",
-							   ducks[i].name,
-							   ducks[i].type,
-							   ducks[i].position[0],
-							   ducks[i].position[1],
-							   ducks[i].weight,
-							   ducks[i].height,
-							   ducks[i].paws_count,
-							   ducks[i].wings_count
-						);
-					}
-					free(ducks[i].name);
-					free(ducks[i].type);
-					success = 2;
-				}
-
-				if (success != 2) {
-					puts("Output is empty");
-				}
-			}
-		}
-	}
+			puts("Press ENTER to continue");
+			getchar();
+			CLS;
+		} while (state != 7);
+	} else puts("Error while file loading");
 
 	if (ducks != NULL) {
 		free(ducks);
@@ -291,3 +204,151 @@ int has_substring(char *str0, char *str1) {
 	}
 	return strstr(str0_copy, str1_copy) != NULL;
 }
+
+void show_info() {
+	puts("hehe");
+}
+
+int load_data(duck **ducksDest) {
+	char **s2 = NULL;
+	char *string = NULL;
+	char sep;
+	FILE *df;
+	duck *ducks = NULL;
+	int slen, i, j;
+	int count = 0;
+	if ((string = (char *) malloc(MAX_LEN * sizeof(char) + 1)) != NULL) {
+		if ((df = fopen("data.csv", "r")) != NULL) {
+			sep = ';';
+			while (fgets(string, MAX_LEN, df)) {
+				count++;
+			}
+
+			ducks = (duck *) malloc(count * sizeof(duck));
+			fseek(df, 0, SEEK_SET);
+			if (ducks != NULL) {
+				for (i = 0; i < count; i++) {
+					fgets(string, MAX_LEN, df);
+					slen = strlen(string);
+					string[slen - 1] = '\0';
+					slen = strlen(string);
+
+					s2 = simple_split(string, slen, sep);
+					if (s2 != NULL) {
+						for (j = 0; j < 7; j++) {
+							if (s2[j] == NULL) {
+								for (i = j - 1; j >= 0; j--) free(s2[i]);
+								i = count;
+								j = 7;
+							}
+						}
+						if (i != count) {
+							ducks[i].name = s2[0];
+							ducks[i].type = s2[1];
+							ducks[i].position[0] = atoi(s2[2]);
+							ducks[i].position[1] = atoi(s2[3]);
+							ducks[i].weight = atof(s2[4]);
+							ducks[i].height = atof(s2[5]);
+							ducks[i].paws_count = atoi(s2[6]);
+							ducks[i].wings_count = atoi(s2[7]);
+							for (j = 2; j < 8; j++) free(s2[j]);
+						} else {
+							puts("Out if memory! Program terminated");
+							count = -1;
+						}
+					} else {
+						puts("Out if memory! Program terminated");
+						ClearStringArray(s2, 8);
+						count = -1;
+					}
+				}
+				fclose(df);
+			} else {
+				puts("Out if memory! Program terminated");
+				count = -1;
+			}
+		}
+	}
+	*ducksDest = ducks;
+	return count;
+}
+
+int add_data(duck **ducks, int count) {
+	int symbolsCount;
+	char endSymbol;
+	int success;
+	success = 0;
+	getchar();
+	puts("Wants to add more?");
+	puts("1 - yes; any key - no; ");
+	while (getchar() == '1') {
+		getchar();
+		*ducks = (duck *) realloc(*ducks, (count + 1) * sizeof(duck));
+		puts("Input symbols count in name");
+		scanf("%d", &symbolsCount);
+		getchar();
+		(*ducks)[count].name = (char *) malloc(symbolsCount * sizeof(char));
+
+		puts("Input symbols count in type");
+		scanf("%d", &symbolsCount);
+		getchar();
+		(*ducks)[count].type = (char *) malloc(symbolsCount * sizeof(char));
+
+		if ((*ducks)[count].name == NULL || (*ducks)[count].type == NULL) {
+			success = 0;
+			puts("memory allocation error");
+		} else {
+			puts("Adding new duck with name:");
+			new_gets((*ducks)[count].name, MAX_LEN, '\n');
+
+			puts("With type:");
+			new_gets((*ducks)[count].type, MAX_LEN, '\n');
+
+			puts("Pos X of duck: ");
+			scanf("%d", &((*ducks)[count].position[0]));
+			puts("Pos Y of duck: ");
+			scanf("%d", &((*ducks)[count].position[1]));
+			puts("Weight of duck: ");
+			scanf("%f", &((*ducks)[count].weight));
+			puts("Height of duck: ");
+			scanf("%f", &((*ducks)[count].height));
+			puts("Paws count of duck: ");
+			scanf("%d", &((*ducks)[count].paws_count));
+			puts("Wings count of duck: ");
+			scanf("%d", &((*ducks)[count].wings_count));
+			getchar();
+
+			printf("name: %s type %s pos: %d:%d w: %f h: %f paws %d wings %d\n ",
+				   (*ducks)[count].name,
+				   (*ducks)[count].type,
+				   (*ducks)[count].position[0],
+				   (*ducks)[count].position[1],
+				   (*ducks)[count].weight,
+				   (*ducks)[count].height,
+				   (*ducks)[count].paws_count,
+				   (*ducks)[count].wings_count
+			);
+			count++;
+			puts("Wants to add more?");
+			puts("1 - yes; any key - no; ");
+		}
+	}
+	return count;
+}
+
+void show_data(duck **ducks, int count) {
+	int i;
+	for (i = 0; i < count; i++) {
+		printf("name: %s type %s pos: %d:%d w: %f h: %f paws %d wings %d\n ",
+			   (*ducks)[i].name,
+			   (*ducks)[i].type,
+			   (*ducks)[i].position[0],
+			   (*ducks)[i].position[1],
+			   (*ducks)[i].weight,
+			   (*ducks)[i].height,
+			   (*ducks)[i].paws_count,
+			   (*ducks)[i].wings_count
+		);
+	}
+}
+

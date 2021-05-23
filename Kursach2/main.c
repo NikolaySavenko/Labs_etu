@@ -1,13 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 
 #define MAX_LEN 256
-#define MAX_SUBSTRING_LEN 64
-
-# define MAX_STRING_LEN 300
-#define STR_END '\n'
 
 #if defined(__linux) || defined(__linux__)
 #define CLS system("clear")
@@ -31,7 +26,7 @@ int load_data(duck **ducksDest, char **filename);
 
 void save_data(duck **ducks, int count);
 
-int add_data(duck **ducks, int count);
+int add_data(duck **ducks, int count, char *templates_file);
 
 char **simple_split(char *str, int length, char sep);
 
@@ -61,16 +56,20 @@ void free_data(duck **ducks, int count);
 
 int main() {
 	duck *ducks = NULL;
-	char *filename = NULL;
+	char *database_filename = NULL;
+	char *samples_filename = NULL;
 	int ducks_count;
 	int state;
 
-	filename = (char *) malloc(MAX_LEN * sizeof (char));
-	strcpy(filename, "data.csv");
-	ducks_count = load_data(&ducks, &filename);
-	if (ducks_count >= 0 && filename != NULL) {
+	database_filename = (char *) malloc(MAX_LEN * sizeof (char));
+	samples_filename = (char *) malloc(MAX_LEN * sizeof (char));
+	strcpy(database_filename, "data.csv");
+	strcpy(samples_filename, "samples.csv");
+	ducks_count = load_data(&ducks, &database_filename);
+	if (ducks_count >= 0 && database_filename != NULL) {
 		do {
-			printf("[DATABASE] %s\n", filename);
+			printf("[DATABASE] %s\n", database_filename);
+			printf("[SAMPLES] %s\n", samples_filename);
 			puts("");
 			puts("0: INFO");
 			puts("1: ADD");
@@ -83,6 +82,7 @@ int main() {
 			puts("---EXTRA---");
 			puts("10: load database from file");
 			puts("11: save database to file");
+			puts("12: load samples from file");
 			puts("");
 			scanf("%d", &state);
 
@@ -94,7 +94,7 @@ int main() {
 					break;
 				case 1:
 					CLS;
-					ducks_count = add_data(&ducks, ducks_count);
+					ducks_count = add_data(&ducks, ducks_count, samples_filename);
 					getchar();
 					break;
 				case 2:
@@ -130,10 +130,10 @@ int main() {
 				case 10:
 					CLS;
 					puts("READ");
-					printf("Input new database filename [MAX_LEN=%d]\n", MAX_LEN);
+					printf("Input new database database_filename [MAX_LEN=%d]\n", MAX_LEN);
 					getchar();
-					new_gets(filename, MAX_LEN, '\n');
-					ducks_count = load_data(&ducks, &filename);
+					new_gets(database_filename, MAX_LEN, '\n');
+					ducks_count = load_data(&ducks, &database_filename);
 					if (ducks_count > 0) {
 						puts("Success");
 					}
@@ -142,6 +142,13 @@ int main() {
 					CLS;
 					puts("SAVE");
 					save_data(&ducks, ducks_count);
+					break;
+				case 12:
+					CLS;
+					puts("READ SAMPLES");
+					printf("Input new samples database_filename [MAX_LEN=%d]\n", MAX_LEN);
+					getchar();
+					new_gets(samples_filename, MAX_LEN, '\n');
 					break;
 				default:
 					puts("Incorrect key!");
@@ -221,7 +228,7 @@ int new_gets(char *s, int lim, char endSymbol) {
 }
 
 void show_info() {
-	puts("hehe");
+
 }
 
 int load_data(duck **ducksDest, char **filename) {
@@ -288,26 +295,44 @@ int load_data(duck **ducksDest, char **filename) {
 	return count;
 }
 
-int add_data(duck **ducks, int count) {
+int add_data(duck **ducks, int count, char *templates_file) {
 	duck *local = NULL;
+	duck *samples = NULL;
+	int i, samples_count;
+	samples_count = load_data(&samples, &templates_file);
+	/*if samples not loaded it just not be presented; program can be continued as normal*/
+	puts("0 - custom");
+	for (i = 0; i < samples_count; i++) {
+		printf("%d - ", i + 1);
+		print_duck(&samples[i]);
+	}
 	getchar();
-	puts("Wants to add more?");
-	puts("1 - yes; any key - no; ");
-	while (getchar() == '1') {
-		getchar();
-		local = get_new_duck();
-		if (local != NULL) {
-			*ducks = (duck *) realloc(*ducks, (count + 1) * sizeof(duck));
-			if (*ducks != NULL) {
+	printf("");
+	puts("Choose:");
+	scanf("%d", &i);
+	*ducks = (duck *) realloc(*ducks, (count + 1) * sizeof(duck));
+	if (*ducks != NULL) {
+		if (i == 0) {
+			getchar();
+			local = get_new_duck();
+			if (local != NULL) {
 				(*ducks)[count] = *local;
 				count++;
 			} else {
-				count = - 1;
-				/*it means error*/
+				puts("Memory alloc error");
+				count = -1;
 			}
+		} else if (i > 0 && i - 1 < samples_count) {
+			/*from templates*/
+			(*ducks)[count] = samples[i - 1];
+			count++;
+		} else {
+			puts("No duck selected");
 		}
-		puts("Wants to add more?");
-		puts("1 - yes; any key - no; ");
+	} else {
+		puts("Memory alloc error");
+		count = - 1;
+		/*it means error*/
 	}
 	return count;
 }
@@ -347,19 +372,10 @@ void edit_data(duck **ducks, int count) {
 
 duck *get_new_duck() {
 	duck *new_duck = NULL;
-	int symbolsCount;
 	new_duck = (duck *) malloc(sizeof (duck));
 	if (new_duck != NULL) {
-		puts("Input symbols count in name");
-		scanf("%d", &symbolsCount);
-		getchar();
-
-		new_duck->name = (char *) malloc(symbolsCount * sizeof(char));
-
-		puts("Input symbols count in type");
-		scanf("%d", &symbolsCount);
-		getchar();
-		new_duck->type = (char *) malloc(symbolsCount * sizeof(char));
+		new_duck->name = (char *) malloc(MAX_LEN * sizeof(char));
+		new_duck->type = (char *) malloc(MAX_LEN * sizeof(char));
 
 		if (new_duck->name == NULL || new_duck->type == NULL) {
 			if (new_duck->name != NULL) free(new_duck->name);
@@ -368,10 +384,10 @@ duck *get_new_duck() {
 			new_duck = NULL;
 			puts("memory allocation error");
 		} else {
-			puts("Adding new duck with name:");
+			printf("Adding new duck with name[MAX_LEN=%d]:\n", MAX_LEN);
 			new_gets(new_duck->name, MAX_LEN, '\n');
 
-			puts("With type:");
+			printf("With type[MAX_LEN=%d]:\n", MAX_LEN);
 			new_gets(new_duck->type, MAX_LEN, '\n');
 
 			puts("Pos X of duck: ");
@@ -386,7 +402,6 @@ duck *get_new_duck() {
 			scanf("%d", &new_duck->paws_count);
 			puts("Wings count of duck: ");
 			scanf("%d", &new_duck->wings_count);
-			getchar();
 		}
 	} else {
 		puts("memory allocation error");

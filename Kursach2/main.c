@@ -10,9 +10,15 @@
 #define CLS system("cls")
 #endif
 
-typedef struct DUCKDUCK {
+typedef struct DUCKBADGE {
 	char *name;
 	char *type;
+} duck_badge;
+
+typedef struct DUCKDUCK {
+	duck_badge badge;
+	/*char *name;
+	char *type;*/
 	int position[2];
 	float weight;
 	float height;
@@ -261,8 +267,8 @@ int load_data(duck **ducksDest, char **filename) {
 							}
 						}
 						if (i != count) {
-							ducks[i].name = s2[0];
-							ducks[i].type = s2[1];
+							ducks[i].badge.name = s2[0];
+							ducks[i].badge.type = s2[1];
 							ducks[i].position[0] = atoi(s2[2]);
 							ducks[i].position[1] = atoi(s2[3]);
 							ducks[i].weight = atof(s2[4]);
@@ -303,7 +309,6 @@ int add_data(duck **ducks, int count, char *templates_file) {
 		print_duck(&samples[i]);
 	}
 	getchar();
-	printf("");
 	puts("Choose:");
 	scanf("%d", &i);
 	*ducks = (duck *) realloc(*ducks, (count + 1) * sizeof(duck));
@@ -338,8 +343,8 @@ void show_data(duck **ducks, int count) {
 	for (i = 0; i < count; i++) {
 		printf("Duck# %d name: %s type %s pos: %d:%d w: %f h: %f paws %d wings %d\n ",
 			   i,
-			   (*ducks)[i].name,
-			   (*ducks)[i].type,
+			   (*ducks)[i].badge.name,
+			   (*ducks)[i].badge.type,
 			   (*ducks)[i].position[0],
 			   (*ducks)[i].position[1],
 			   (*ducks)[i].weight,
@@ -356,6 +361,7 @@ void edit_data(duck **ducks, int count) {
 	show_data(ducks, count);
 	puts("Input duck index to edit:");
 	scanf("%d", &choosen);
+	getchar();
 	if (choosen < count) {
 		new_duck = get_new_duck();
 		if (new_duck != NULL) {
@@ -370,21 +376,21 @@ duck *get_new_duck() {
 	duck *new_duck = NULL;
 	new_duck = (duck *) malloc(sizeof (duck));
 	if (new_duck != NULL) {
-		new_duck->name = (char *) malloc(MAX_LEN * sizeof(char));
-		new_duck->type = (char *) malloc(MAX_LEN * sizeof(char));
+		new_duck->badge.name = (char *) malloc(MAX_LEN * sizeof(char));
+		new_duck->badge.type = (char *) malloc(MAX_LEN * sizeof(char));
 
-		if (new_duck->name == NULL || new_duck->type == NULL) {
-			if (new_duck->name != NULL) free(new_duck->name);
-			if (new_duck->type != NULL) free(new_duck->type);
+		if (new_duck->badge.name == NULL || new_duck->badge.type == NULL) {
+			if (new_duck->badge.name != NULL) free(new_duck->badge.name);
+			if (new_duck->badge.type != NULL) free(new_duck->badge.type);
 			free(new_duck);
 			new_duck = NULL;
 			puts("memory allocation error");
 		} else {
 			printf("Adding new duck with name[MAX_LEN=%d]:\n", MAX_LEN);
-			new_gets(new_duck->name, MAX_LEN, '\n');
+			new_gets(new_duck->badge.name, MAX_LEN, '\n');
 
 			printf("With type[MAX_LEN=%d]:\n", MAX_LEN);
-			new_gets(new_duck->type, MAX_LEN, '\n');
+			new_gets(new_duck->badge.type, MAX_LEN, '\n');
 
 			puts("Pos X of duck: ");
 			scanf("%d", &new_duck->position[0]);
@@ -409,8 +415,8 @@ duck *get_new_duck() {
 
 void print_duck(duck *target_duck) {
 	printf("name: %s type %s pos: %d:%d w: %f h: %f paws %d wings %d\n ",
-		   target_duck->name,
-		   target_duck->type,
+		   target_duck->badge.name,
+		   target_duck->badge.type,
 		   target_duck->position[0],
 		   target_duck->position[1],
 		   target_duck->weight,
@@ -440,11 +446,11 @@ int delete_data(duck **ducks, int count) {
 
 void free_duck(duck *target) {
 	if (target != NULL) {
-		if (target->name != NULL) {
-			free(target->name);
+		if (target->badge.name != NULL) {
+			free(target->badge.name);
 		}
-		if (target->type != NULL) {
-			free(target->type);
+		if (target->badge.type != NULL) {
+			free(target->badge.type);
 		}
 	}
 }
@@ -452,8 +458,8 @@ void free_duck(duck *target) {
 void swap_data(duck **ducks, int count, int index0, int index1) {
 	duck temp;
 	if (index0 < count && index1 < count) {
-		temp.name = (*ducks)[index0].name;
-		temp.type = (*ducks)[index0].type;
+		temp.badge.name = (*ducks)[index0].badge.name;
+		temp.badge.type = (*ducks)[index0].badge.type;
 		temp.position[0] = (*ducks)[index0].position[0];
 		temp.position[1] = (*ducks)[index0].position[1];
 		temp.weight = (*ducks)[index0].weight;
@@ -461,8 +467,8 @@ void swap_data(duck **ducks, int count, int index0, int index1) {
 		temp.paws_count = (*ducks)[index0].paws_count;
 		temp.wings_count = (*ducks)[index0].wings_count;
 
-		(*ducks)[index0].name = (*ducks)[index1].name;
-		(*ducks)[index0].type = (*ducks)[index1].type;
+		(*ducks)[index0].badge.name = (*ducks)[index1].badge.name;
+		(*ducks)[index0].badge.type = (*ducks)[index1].badge.type;
 		(*ducks)[index0].position[0] = (*ducks)[index1].position[0];
 		(*ducks)[index0].position[1] = (*ducks)[index1].position[1];
 		(*ducks)[index0].weight = (*ducks)[index1].weight;
@@ -470,8 +476,8 @@ void swap_data(duck **ducks, int count, int index0, int index1) {
 		(*ducks)[index0].paws_count = (*ducks)[index1].paws_count;
 		(*ducks)[index0].wings_count = (*ducks)[index1].wings_count;
 
-		(*ducks)[index1].name = temp.name;
-		(*ducks)[index1].type = temp.type;
+		(*ducks)[index1].badge.name = temp.badge.name;
+		(*ducks)[index1].badge.type = temp.badge.type;
 		(*ducks)[index1].position[0] = temp.position[0];
 		(*ducks)[index1].position[1] = temp.position[1];
 		(*ducks)[index1].weight = temp.weight;
@@ -518,9 +524,9 @@ void search_data(duck **ducks, int count) {
 	}
 	puts("");
 	for (i = 0; i < count; i++) {
-		if (choosen == 0 && strcmp(string, (*ducks)[i].name) == 0) {
+		if (choosen == 0 && strcmp(string, (*ducks)[i].badge.name) == 0) {
 			print_duck(&(*ducks)[i]);
-		} else if (choosen == 1 && strcmp(string, (*ducks)[i].type) == 0) {
+		} else if (choosen == 1 && strcmp(string, (*ducks)[i].badge.type) == 0) {
 			print_duck(&(*ducks)[i]);
 		} else if (choosen == 2 && (*ducks)[i].position[0] == value_int) {
 			print_duck(&(*ducks)[i]);
@@ -573,18 +579,18 @@ void sort_data(duck **ducks, int count) {
 	for (step = 0; step < count - 1; ++step) {
 		for (i = 0; i < count - step - 1; ++i) {
 			if (choosen == 0) {
-				if (vector == 0 && strcmp((*ducks)[i].name, (*ducks)[i + 1].name) > 0) {
+				if (vector == 0 && strcmp((*ducks)[i].badge.name, (*ducks)[i + 1].badge.name) > 0) {
 					swap_data(ducks, count, i, i + 1);
 					printf("%d<->%d\n", i, i + 1);
-				} else if (strcmp((*ducks)[i].name, (*ducks)[i + 1].name) < 0) {
+				} else if (strcmp((*ducks)[i].badge.name, (*ducks)[i + 1].badge.name) < 0) {
 					swap_data(ducks, count, i, i + 1);
 					printf("%d<->%d\n", i, i + 1);
 				}
 			} else if (choosen == 1) {
-				if (vector == 0 && strcmp((*ducks)[i].type, (*ducks)[i + 1].type) > 0) {
+				if (vector == 0 && strcmp((*ducks)[i].badge.type, (*ducks)[i + 1].badge.type) > 0) {
 					swap_data(ducks, count, i, i + 1);
 					printf("%d<->%d\n", i, i + 1);
-				} else if (strcmp((*ducks)[i].type, (*ducks)[i + 1].type) < 0) {
+				} else if (strcmp((*ducks)[i].badge.type, (*ducks)[i + 1].badge.type) < 0) {
 					swap_data(ducks, count, i, i + 1);
 					printf("%d<->%d\n", i, i + 1);
 				}
@@ -670,8 +676,8 @@ void save_data(duck **ducks, int count) {
 			for (i = 0; i < count; i++) {
 				printf("Writing duck #%d\n", i);
 				buffer_len = snprintf (NULL, 0, "%s;%s;%d;%d;%f;%f;%d;%d\n",
-						   (*ducks)[i].name,
-						   (*ducks)[i].type,
+						   (*ducks)[i].badge.name,
+						   (*ducks)[i].badge.type,
 						   (*ducks)[i].position[0],
 						   (*ducks)[i].position[1],
 						   (*ducks)[i].weight,
@@ -681,8 +687,8 @@ void save_data(duck **ducks, int count) {
 				buffer = (char *) malloc(buffer_len * sizeof (char));
 				if (buffer != NULL) {
 					snprintf (buffer, buffer_len + 1, "%s;%s;%d;%d;%f;%f;%d;%d\n",
-							  (*ducks)[i].name,
-							  (*ducks)[i].type,
+							  (*ducks)[i].badge.name,
+							  (*ducks)[i].badge.type,
 							  (*ducks)[i].position[0],
 							  (*ducks)[i].position[1],
 							  (*ducks)[i].weight,

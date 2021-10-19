@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Laba1
 {
-    internal class LinkedNode<T>
+    public class LinkedNode<T>
     {
         public T Value {  get; set; }
         public LinkedNode<T>? Next {  get; set; }

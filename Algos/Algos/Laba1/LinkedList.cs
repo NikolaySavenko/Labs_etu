@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Laba1
 {
-    internal class LinkedList<T>
+    public class LinkedList<T>
     {
-        private LinkedNode<T> _first;
-        private LinkedNode<T> _last;
+        private LinkedNode<T>? _first;
+        private LinkedNode<T>? _last;
         public int Count { get
             {
                 int count = 0;
@@ -23,8 +23,8 @@ namespace Laba1
             }
         }
 
-        public LinkedList(T firstValue) {
-            _first = new LinkedNode<T>(firstValue);
+        public LinkedList() {
+            _first = null;
             _last = _first;
         }
 

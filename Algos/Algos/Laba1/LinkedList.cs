@@ -79,6 +79,16 @@ namespace Laba1
             return current.Value;
         }
 
+        public LinkedNode<T> node_at(int position)
+        {
+            var current = _first;
+            for (var i = 0; i <= position; i++)
+            {
+                current = current.Next;
+            }
+            return current;
+        }
+
         public void remove(int position)
         {
             var current = _first;
@@ -126,6 +136,13 @@ namespace Laba1
                 sb.AppendLine(current.ToString());
             }
             return sb.ToString();
+        }
+
+        public void swap(int pos0, int pos1)
+        {
+            var buffer = node_at(pos0).Value;
+            node_at(pos0).Value = node_at(pos1).Value;
+            node_at(pos1).Value = buffer;
         }
     }
 }

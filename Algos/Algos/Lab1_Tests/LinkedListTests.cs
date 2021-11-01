@@ -102,6 +102,22 @@ namespace Lab1_Tests
             list.insert(4, 2);
             Assert.Equal("2 1 4 3", list.ToString());
         }
+        
+        [Fact]
+        public void atTest()
+        {
+            var list = new LinkedList<int>();
+            list.insert(1, 0);
+            list.insert(2, 0);
+            list.insert(3, 2);
+            list.insert(4, 2);
+
+            Assert.Equal(2, list.at(0));
+            Assert.Equal(1, list.at(1));
+            Assert.Equal(4, list.at(2));
+            Assert.Equal(3, list.at(3));
+        }
+
 
 
         [Fact]

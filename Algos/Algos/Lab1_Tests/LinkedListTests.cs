@@ -5,6 +5,22 @@ namespace Lab1_Tests
 {
     public class LinkedListTests
     {
+
+        [Fact]
+        public void push_backTest()
+        {
+            var list = new LinkedList<int>();
+            Assert.Equal("", list.ToString());
+            list.push_back(0);
+            Assert.Equal("0", list.ToString());
+
+            list.push_back(0);
+            Assert.Equal("0 0", list.ToString());
+
+            list.push_back(1);
+            Assert.Equal("0 0 1", list.ToString());
+        }
+
         [Fact]
         public void SizeTest()
         {
@@ -23,5 +39,7 @@ namespace Lab1_Tests
             list.pop_back();
             Assert.Equal(0, list.get_size());
         }
+
+       
     }
 }

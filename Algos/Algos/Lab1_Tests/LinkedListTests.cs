@@ -84,6 +84,22 @@ namespace Lab1_Tests
             Assert.Equal("", list.ToString());
         }
 
+        [Fact]
+        public void insertTest()
+        {
+            var list = new LinkedList<int>();
+            Assert.Equal("", list.ToString());
+           
+            list.insert(0, 1);
+            Assert.Equal("1", list.ToString());
+
+            list.insert(0, 2);
+            Assert.Equal("2 1", list.ToString());
+
+            list.insert(2, 3);
+            Assert.Equal("2 1 3", list.ToString());
+        }
+
 
         [Fact]
         public void SizeTest()

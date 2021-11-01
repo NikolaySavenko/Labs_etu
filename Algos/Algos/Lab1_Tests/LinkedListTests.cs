@@ -37,6 +37,55 @@ namespace Lab1_Tests
         }
 
         [Fact]
+        public void pop_backTest()
+        {
+            var list = new LinkedList<int>();
+            Assert.Equal("", list.ToString());
+            list.push_back(0);
+            Assert.Equal("0", list.ToString());
+
+            list.push_back(0);
+            Assert.Equal("0 0", list.ToString());
+
+            list.push_back(1);
+            Assert.Equal("0 0 1", list.ToString());
+
+            list.pop_back();
+            Assert.Equal("0 0", list.ToString());
+
+            list.pop_back();
+            Assert.Equal("0", list.ToString());
+
+            list.pop_back();
+            Assert.Equal("", list.ToString());
+        }
+
+        [Fact]
+        public void pop_frontTest()
+        {
+            var list = new LinkedList<int>();
+            Assert.Equal("", list.ToString());
+            list.push_front(0);
+            Assert.Equal("0", list.ToString());
+
+            list.push_front(0);
+            Assert.Equal("0 0", list.ToString());
+
+            list.push_front(1);
+            Assert.Equal("1 0 0", list.ToString());
+
+            list.pop_front();
+            Assert.Equal("0 0", list.ToString());
+
+            list.pop_front();
+            Assert.Equal("0", list.ToString());
+
+            list.pop_front();
+            Assert.Equal("", list.ToString());
+        }
+
+
+        [Fact]
         public void SizeTest()
         {
             var list = new LinkedList<int>();

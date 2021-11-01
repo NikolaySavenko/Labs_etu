@@ -111,7 +111,7 @@ namespace Laba1
         public T at(int position)
         {
             var current = _first;
-            for (var i = 0; i <= position; i++)
+            for (var i = 0; i < position; i++)
             {
                 current = current.Next;
             }

@@ -4,7 +4,7 @@
 using namespace std;
 
 template <size_t bitsetsize>
-void shift_bitset(bitset<bitsetsize>* source_bitset);
+bool shift_bitset(bitset<bitsetsize>* source_bitset);
 
 int main()
 {
@@ -19,8 +19,9 @@ int main()
         cout << "Source(_uint): " << _uint << endl;
         auto bits = bitset<sizeof(unsigned int) * 8>(_uint);
         cout << "bin(_uint): " << bits << endl;
-        shift_bitset<sizeof(unsigned int) * 8>(&bits);
-        cout << "New value:\n" << (unsigned int)(bits.to_ulong());
+        if (shift_bitset<sizeof(unsigned int) * 8>(&bits)) {
+            cout << "New value:\n" << (unsigned int)(bits.to_ulong());
+        }
     }
     else if (number_type == 0) {
         cin >> _ldouble;
@@ -29,8 +30,9 @@ int main()
         auto bits = bitset<sizeof(long double) * 8>(bits_source);
         cout << "bin(_ldoube): " << bits << endl;
 
-        shift_bitset<sizeof(long double) * 8>(&bits);
-        cout << "New value:\n" << (long double)(bits.to_ullong());
+        if (shift_bitset<sizeof(long double) * 8>(&bits)) {
+            cout << "New value:\n" << (long double)(bits.to_ullong());
+        }
     }
     else {
         cout << "Uncorrect type!" << endl;
@@ -40,13 +42,13 @@ int main()
 }
 
 template <size_t bitsetsize>
-void shift_bitset(bitset<bitsetsize>* source_bitset) {
+bool shift_bitset(bitset<bitsetsize>* source_bitset) {
     cout << "Enter start" << "\n";
     int start;
     cin >> start;
     if (start < 0 || start >= bitsetsize) {
         cout << "Invalid start position" << endl;
-        return;
+        return false;
     }
 
     cout << "Enter area lenght" << "\n";
@@ -54,6 +56,7 @@ void shift_bitset(bitset<bitsetsize>* source_bitset) {
     cin >> len;
     if (len < 0 || len + start >= bitsetsize) {
         cout << "Invalid area len" << endl;
+        return false;
     }
 
     cout << "Enter shift count(>0 move right; <0 move left)" << "\n";
@@ -61,6 +64,7 @@ void shift_bitset(bitset<bitsetsize>* source_bitset) {
     cin >> l_count;
     if (l_count == 0) {
         cout << "No shift" << "\n";
+        return false;
     }
     if (l_count < 0) {
         l_count *= -1;
@@ -83,4 +87,5 @@ void shift_bitset(bitset<bitsetsize>* source_bitset) {
     }
     
     cout << (*source_bitset) << endl;
+    return true;
 }

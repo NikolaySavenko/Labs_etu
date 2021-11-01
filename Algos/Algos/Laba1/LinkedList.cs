@@ -151,14 +151,13 @@ namespace Laba1
 
         public void set(int position, T value)
         {
-            var newNode = new LinkedNode<T>(value);
-            var nodeOnPrePosition = _first;
+            var current = _first;
             for (var i = 0; i < position; i++)
             {
-                nodeOnPrePosition = nodeOnPrePosition.Next;
+                current = current.Next;
             }
-            newNode.Next = nodeOnPrePosition.Next.Next;
-            nodeOnPrePosition.Next = newNode;
+
+            current.Value = value;
         }
 
         public bool isEmpty()

@@ -139,6 +139,41 @@ namespace Lab1_Tests
             Assert.Equal(0, list.get_size());
         }
 
-       
+        [Fact]
+        public void clearTest()
+        {
+            var list = new LinkedList<int>();
+            list.insert(1, 0);
+            list.insert(2, 0);
+            list.insert(3, 2);
+            list.insert(4, 2);
+            list.clear();
+            
+            Assert.Equal("", list.ToString());
+            list.clear();
+            Assert.Equal("", list.ToString());
+        }
+        
+        [Fact]
+        public void setTest()
+        {
+            var list = new LinkedList<int>();
+            list.insert(1, 0);
+            list.insert(2, 0);
+            list.insert(3, 2);
+            list.insert(4, 2);
+           
+            list.set(0, 11);
+            Assert.Equal("11 1 4 3", list.ToString());
+
+            list.set(1, 222);
+            Assert.Equal("11 222 4 3", list.ToString());
+
+            list.set(2, 33);
+            Assert.Equal("11 222 33 3", list.ToString());
+            
+            list.set(3, 4123);
+            Assert.Equal("11 222 33 4123", list.ToString());
+        }
     }
 }

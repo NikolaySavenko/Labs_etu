@@ -163,7 +163,12 @@ namespace Laba1
             var current = _first;
             while (current != null)
             {
-                sb.AppendLine(current.ToString());
+                if (current != _first)
+                {
+                    sb.Append(" ");
+                }
+                sb.Append(current.ToString());
+                current = current.Next;
             }
             return sb.ToString();
         }

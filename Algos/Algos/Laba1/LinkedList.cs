@@ -31,8 +31,16 @@ namespace Laba1
         public void push_back(T value)
         {
             var newNode = new LinkedNode<T>(value);
-            _last.Next = newNode;
-            _last = newNode;
+            if (_last != null)
+            {
+                _last.Next = newNode;
+                _last = newNode;
+            } else 
+            {
+                _first = newNode;
+                _last = newNode;
+            }
+            
         }
 
         public void push_front(T value)
@@ -40,21 +48,43 @@ namespace Laba1
             var newNode = new LinkedNode<T>(value);
             newNode.Next = _first;
             _first = newNode;
+            if (_last == null)
+            {
+                _last = newNode;
+            }
         }
 
         public void pop_back()
         {
             var preLast = _first;
-            while (preLast.Next.Next != null)
+            if (preLast != null)
             {
-                preLast = preLast.Next;
+                LinkedNode<T>? next = preLast.Next;
+                if (next != null)
+                {
+                    while (next.Next != null)
+                    {
+                        preLast = preLast.Next;
+                    }
+                    preLast.Next = null;
+                    _last = preLast;
+                } else
+                {
+                    _first = null;
+                    _last = null;
+                }
+                
             }
-            preLast.Next = null;
+            else throw new InvalidOperationException();
         }
 
         public void pop_front()
         {
             _first = _first.Next;
+            if (_first == null)
+            {
+                _last = null;
+            }
         }
 
         public void insert(T value, int position)

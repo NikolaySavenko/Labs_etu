@@ -3,7 +3,7 @@ using Laba1;
 
 namespace Lab1_Tests
 {
-    public class LinkedLisstTests
+    public class LinkedListTests
     {
         [Fact]
         public void SizeTest()

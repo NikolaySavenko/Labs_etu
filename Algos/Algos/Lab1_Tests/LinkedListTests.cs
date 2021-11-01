@@ -22,6 +22,21 @@ namespace Lab1_Tests
         }
 
         [Fact]
+        public void push_frontTest()
+        {
+            var list = new LinkedList<int>();
+            Assert.Equal("", list.ToString());
+            list.push_front(0);
+            Assert.Equal("0", list.ToString());
+
+            list.push_front(0);
+            Assert.Equal("0 0", list.ToString());
+
+            list.push_front(1);
+            Assert.Equal("1 0 0", list.ToString());
+        }
+
+        [Fact]
         public void SizeTest()
         {
             var list = new LinkedList<int>();

@@ -90,14 +90,17 @@ namespace Lab1_Tests
             var list = new LinkedList<int>();
             Assert.Equal("", list.ToString());
            
-            list.insert(0, 1);
+            list.insert(1, 0);
             Assert.Equal("1", list.ToString());
 
-            list.insert(0, 2);
+            list.insert(2, 0);
             Assert.Equal("2 1", list.ToString());
 
-            list.insert(2, 3);
+            list.insert(3, 2);
             Assert.Equal("2 1 3", list.ToString());
+            
+            list.insert(4, 2);
+            Assert.Equal("2 1 4 3", list.ToString());
         }
 
 

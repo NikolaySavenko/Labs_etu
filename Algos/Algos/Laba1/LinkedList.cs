@@ -89,13 +89,23 @@ namespace Laba1
         public void insert(T value, int position)
         {
             var newNode = new LinkedNode<T>(value);
-            var current = _first;
-            for (var i = 0; i < position; i++)
+            if (position == 0)
             {
-                current = current.Next;
+                push_front(value);
             }
-            newNode.Next = current.Next;
-            current.Next = newNode;
+            else if (position == Count)
+            {
+                push_back(value);
+            } else 
+            {
+                var current = _first;
+                for (var i = 0; i < position - 1; i++)
+                {
+                    current = current.Next;
+                }
+                newNode.Next = current.Next;
+                current.Next = newNode;
+            }
         }
 
         public T at(int position)

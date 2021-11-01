@@ -175,5 +175,67 @@ namespace Lab1_Tests
             list.set(3, 4123);
             Assert.Equal("11 222 33 4123", list.ToString());
         }
+        
+        [Fact]
+        public void isEmptyTest()
+        {
+            var list = new LinkedList<int>();
+            Assert.True(list.isEmpty());
+            list.insert(1, 0);
+            list.insert(2, 0);
+            list.insert(3, 2);
+            list.insert(4, 2);
+           
+            list.set(0, 11);
+            Assert.False(list.isEmpty());
+            
+            list.clear();
+            Assert.True(list.isEmpty());
+        }
+        
+        [Fact]
+        public void ToStringTest()
+        {
+            var list = new LinkedList<int>();
+            Assert.Equal("", list.ToString());
+           
+            list.insert(1, 0);
+            Assert.Equal("1", list.ToString());
+
+            list.insert(2, 0);
+            Assert.Equal("2 1", list.ToString());
+
+            list.insert(3, 2);
+            Assert.Equal("2 1 3", list.ToString());
+            
+            list.insert(4, 2);
+            Assert.Equal("2 1 4 3", list.ToString());
+            
+            list.clear();
+            Assert.Equal("", list.ToString());
+        }
+        
+        [Fact]
+        public void swapTest()
+        {
+            var list = new LinkedList<int>();
+            list.insert(1, 0);
+            list.insert(2, 0);
+            list.insert(3, 2);
+            list.insert(4, 2);
+            Assert.Equal("2 1 4 3", list.ToString());
+            
+            list.swap(0, 0);
+            Assert.Equal("2 1 4 3", list.ToString());
+            
+            list.swap(0, 3);
+            Assert.Equal("3 1 4 2", list.ToString());
+            
+            list.swap(0, 3);
+            Assert.Equal("2 1 4 3", list.ToString());
+            
+            list.swap(0, 1);
+            Assert.Equal("1 2 4 3", list.ToString());
+        }
     }
 }

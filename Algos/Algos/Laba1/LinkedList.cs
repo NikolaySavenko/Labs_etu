@@ -59,10 +59,9 @@ namespace Laba1
             var preLast = _first;
             if (preLast != null)
             {
-                LinkedNode<T>? next = preLast.Next;
-                if (next != null)
+                if (preLast.Next != null)
                 {
-                    while (next.Next != null)
+                    while (preLast.Next.Next != null)
                     {
                         preLast = preLast.Next;
                     }

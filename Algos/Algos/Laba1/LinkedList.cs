@@ -130,12 +130,20 @@ namespace Laba1
 
         public void remove(int position)
         {
-            var current = _first;
-            for (var i = 0; i < position; i++)
+            if (position == Count)
             {
-                current = current.Next;
+                pop_back();
+            } else
+            {
+                var current = _first;
+
+                for (var i = 0; i < position; i++)
+                {
+                    current = current.Next;
+                }
+                current.Next = current.Next.Next;
             }
-            current.Next = current.Next.Next;
+           
         }
 
         public int get_size()

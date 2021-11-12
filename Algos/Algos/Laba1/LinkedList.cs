@@ -133,11 +133,16 @@ namespace Laba1
             if (position == Count - 1)
             {
                 pop_back();
-            } else
+            }
+            else if(position == 0)
+            {
+                pop_front();
+            }
+            else
             {
                 var current = _first;
 
-                for (var i = 0; i < position; i++)
+                for (var i = 0; i < position - 1; i++)
                 {
                     current = current.Next;
                 }

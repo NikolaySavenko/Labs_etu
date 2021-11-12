@@ -130,7 +130,7 @@ namespace Laba1
 
         public void remove(int position)
         {
-            if (position == Count)
+            if (position == Count - 1)
             {
                 pop_back();
             } else

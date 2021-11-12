@@ -118,6 +118,27 @@ namespace Lab1_Tests
             Assert.Equal(3, list.at(3));
         }
 
+        [Fact]
+        public void removeTest()
+        {
+            var list = new LinkedList<int>();
+            list.insert(1, 0);
+            list.insert(2, 0);
+            list.insert(3, 2);
+            list.insert(4, 2);
+
+            Assert.Equal("2 1 4 3", list.ToString());
+
+            list.remove(0);
+            Assert.Equal("1 4 3", list.ToString());
+
+            list.remove(1);
+            Assert.Equal("1 3", list.ToString());
+
+            list.remove(1);
+            Assert.Equal("1", list.ToString());
+        }
+
 
 
         [Fact]

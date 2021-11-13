@@ -28,6 +28,18 @@ namespace Laba1
             _last = _first;
         }
 
+        // Destructor triggers when GC is making 'magic'
+        // For details please read CLR via C# by Jeffrey Richter
+        ~LinkedList()
+        {
+            while (Count > 0)
+            {
+                // it removes roots to elements
+                // thats gives CG opportunity to safely delete elements with no roots
+                pop_front();
+            }
+        }
+
         public void push_back(T value)
         {
             var newNode = new LinkedNode<T>(value);

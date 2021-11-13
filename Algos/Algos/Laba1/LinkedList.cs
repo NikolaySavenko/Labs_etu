@@ -32,7 +32,7 @@ namespace Laba1
         // For details please read CLR via C# by Jeffrey Richter
         ~LinkedList()
         {
-            while (Count > 0)
+            while (_first != null)
             {
                 // it removes roots to elements
                 // thats gives CG opportunity to safely delete elements with no roots

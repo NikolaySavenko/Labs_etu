@@ -46,7 +46,22 @@ namespace Laba2
             return array;
         }
 
-        
+        public static T[] InsertionSort<T>(this T[] array) where T : IComparable<T>
+        {
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                for (int j = i + 1; j > 0; j--)
+                {
+                    if (array[j - 1].CompareTo(array[j]) > 0)
+                    {
+                        T temp = array[j - 1];
+                        array[j - 1] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
+            return array;
+        }
 
 
         public static void BogoSort<T>(T[] array)

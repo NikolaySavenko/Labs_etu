@@ -1,13 +1,30 @@
+using System;
 using Xunit;
+using Laba2;
 
 namespace Lab2_Tests
 {
-    public class SortTest
+    public class SortTests
     {
-        [Fact]
-        public void Test1()
-        {
+        private Random random = new Random();
 
+
+        [Theory]
+        [InlineData(2000, 1000)]
+        public void QuickSort(int count, int maxValue)
+        {
+            int[] array = new int[count];
+
+            for (var i = 0; i < count; i++)
+            {
+                array[i] = random.Next(maxValue);
+            }
+
+            var nativeSortedArray = (int[]) array.Clone();
+            Array.Sort(nativeSortedArray);
+            array.QuickSort(0, array.Length - 1);
+
+            Assert.Equal(nativeSortedArray, array);
         }
     }
 }

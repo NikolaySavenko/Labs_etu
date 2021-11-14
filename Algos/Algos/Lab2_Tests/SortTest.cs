@@ -86,5 +86,22 @@ namespace Lab2_Tests
 
             Assert.Equal(nativeSortedArray, array);
         }
+
+        [Theory]
+        [InlineData(1000, "abcdefghijklmnopqrstuvwxyz")]
+        public void ConuntingSortTest(int count, string source)
+        {
+            char[] alphabet = source.ToCharArray();
+            char[] array = new char[count];
+
+            for (var i = 0; i < count; i++)
+            {
+                array[i] = alphabet[random.Next(alphabet.Length - 1)];
+            }
+
+            array.CountingSort();
+
+            Assert.True(array.IsSorted());
+        }
     }
 }

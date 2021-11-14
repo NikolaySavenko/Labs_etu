@@ -63,10 +63,38 @@ namespace Laba2
             return array;
         }
 
-
-        public static void BogoSort<T>(T[] array)
+        public static bool IsSorted<T>(this T[] array) where T : IComparable<T>
         {
+            if (array.Length < 2) 
+                return true;
 
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i].CompareTo(array[i - 1]) < 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private static void Shuffle<T>(this T[] array)
+        {
+            Random rand = new Random();
+            for (int i = 0; i < array.Length; i++)
+            {
+                int swapIndex = rand.Next(array.Length);
+                Swap(ref array[swapIndex], ref array[i]);
+            }
+        }
+
+        public static T[] BogoSort<T>(this T[] array) where T : IComparable<T>
+        {
+            while (!array.IsSorted())
+            {
+                array.Shuffle();
+            }
+            return array;
         }
 
         public static void CountingSort(char[] array)

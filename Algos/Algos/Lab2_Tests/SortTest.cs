@@ -10,7 +10,11 @@ namespace Lab2_Tests
 
 
         [Theory]
-        [InlineData(2000, 1000)]
+        [InlineData(10, 1000)]
+        [InlineData(100, 1000)]
+        [InlineData(1_000, 1000)]
+        [InlineData(10_000, 1000)]
+        [InlineData(100_000, 1000)]
         public void QuickSortTest(int count, int maxValue)
         {
             int[] array = new int[count];
@@ -28,7 +32,11 @@ namespace Lab2_Tests
         }
 
         [Theory]
-        [InlineData(2000, 1000)]
+        [InlineData(10, 1000)]
+        [InlineData(100, 1000)]
+        [InlineData(1_000, 1000)]
+        [InlineData(10_000, 1000)]
+        [InlineData(100_000, 1000)]
         public void InsertionSortTest(int count, int maxValue)
         {
             int[] array = new int[count];

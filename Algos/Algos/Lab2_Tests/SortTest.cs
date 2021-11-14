@@ -44,5 +44,47 @@ namespace Lab2_Tests
 
             Assert.Equal(nativeSortedArray, array);
         }
+
+        [Fact]
+        public void IsSortedTest()
+        {
+            int[] array = new int[] {0, 1, 2, 3};
+
+            Assert.True(array.IsSorted());
+
+            array = new int[] { 0, 1, 2, 1 };
+
+            Assert.False(array.IsSorted());
+
+            array = new int[] { 2, 1, 2, 1 };
+
+            Assert.False(array.IsSorted());
+
+            array = new int[] { 2, 2, 2, 2 };
+
+            Assert.True(array.IsSorted());
+
+            array = new int[] { 0, 1, 7, 6, 7 };
+
+            Assert.False(array.IsSorted());
+        }
+
+        [Theory]
+        [InlineData(10, 1000)]
+        public void BogoSortTest(int count, int maxValue)
+        {
+            int[] array = new int[count];
+
+            for (var i = 0; i < count; i++)
+            {
+                array[i] = random.Next(maxValue);
+            }
+
+            var nativeSortedArray = (int[])array.Clone();
+            Array.Sort(nativeSortedArray);
+            array.BogoSort();
+
+            Assert.Equal(nativeSortedArray, array);
+        }
     }
 }

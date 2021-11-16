@@ -2,8 +2,6 @@
 using System.Diagnostics;
 using Laba2;
 
-Console.WriteLine("Hello, Motherfucker!");
-
 var random = new Random();
 const int maxValue = 1000;
 var stopWatch = new Stopwatch();

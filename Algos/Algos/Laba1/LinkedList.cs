@@ -89,6 +89,7 @@ namespace Laba1
             else throw new InvalidOperationException();
         }
 
+
         public void pop_front()
         {
             _first = _first.Next;
@@ -96,6 +97,34 @@ namespace Laba1
             {
                 _last = null;
             }
+        }
+
+        public T? PopLastData()
+        {
+            var preLast = _first;
+            // default bullshit
+            T buf = _last.Value;
+            if (preLast != null)
+            {
+                if (preLast.Next != null)
+                {
+                    while (preLast.Next.Next != null)
+                    {
+                        preLast = preLast.Next;
+                    }
+                    buf = preLast.Next.Value;
+                    preLast.Next = null;
+                    _last = preLast;
+                }
+                else
+                {
+                    _first = null;
+                    _last = null;
+                }
+
+            }
+            else throw new InvalidOperationException();
+            return buf;
         }
 
         public void insert(T value, int position)

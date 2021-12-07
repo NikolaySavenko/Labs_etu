@@ -45,6 +45,12 @@ namespace Laba3
                         : Add(node, currentNode.Right);
         }
 
+        public void Remove(T value)
+		{
+            var node = this.Single(node => node.Value.CompareTo(value) == 0);
+            Remove(node);
+		}
+
         public void Remove(BinaryNode<T> node)
         {
             if (node == null)

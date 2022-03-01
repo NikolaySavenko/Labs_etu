@@ -6,11 +6,15 @@ public class Map<TKey, TValue> where TValue : class where TKey : IComparable<TKe
 {
     private RedBlackTree<TKey, TValue> _tree { get; set; }
 
+    // Works like get_keys
+    // .NET Developers prefer explicit getters instead of old get methods
     public IEnumerable<TKey> Keys
     {
         get => _tree.Keys;
     }
 
+    // Works like get_values
+    // .NET Developers prefer explicit getters instead of old get methods
     public IEnumerable<TValue> Values
     {
         get => _tree.Values;
@@ -41,6 +45,8 @@ public class Map<TKey, TValue> where TValue : class where TKey : IComparable<TKe
         _tree.Clear();
     }
 
+    // Works like "print()"
+    // Please use ToString for map serialization and printing
     public override string ToString()
     {
         return _tree.ToString();

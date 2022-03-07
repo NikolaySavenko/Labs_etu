@@ -40,7 +40,7 @@ public class FanoEncoder
         }
     }
 
-    private IDictionary<char, int> FrequencyDictionary
+    public IDictionary<char, int> FrequencyDictionary
     {
         get
         {

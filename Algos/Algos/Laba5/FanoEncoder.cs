@@ -4,7 +4,7 @@ public class FanoEncoder
 {
     private IDictionary<char, int>? _frequencyMap;
     private IDictionary<char, string>? _encodedMap;
-    public string Source { get; }
+    private string Source { get; }
 
     public IDictionary<char, string> EncodedMap
     {
@@ -30,24 +30,17 @@ public class FanoEncoder
         get
         {
             var stream = new MemoryStream();
-            
-            using(var writer = new BinaryWriter(stream))
+            using var writer = new BinaryWriter(stream);
+            foreach (var pseudoBit in Source.Select(key => EncodedMap[key]).SelectMany(code => code))
             {
-                foreach (var key in Source)
-                {
-                    var code = EncodedMap[key];
-                    foreach (var pseudoBit in code)
-                    {
-                        writer.Write(pseudoBit == '1');
-                    }
-                }
+                writer.Write(pseudoBit == '1');
             }
 
             return stream;
         }
     }
 
-    public IDictionary<char, int> FrequencyDictionary
+    private IDictionary<char, int> FrequencyDictionary
     {
         get
         {
@@ -73,7 +66,7 @@ public class FanoEncoder
         }
     }
 
-    public IEnumerable<char> KeysSortedByDesc => FrequencyDictionary.Keys.OrderByDescending(key => FrequencyDictionary[key]);
+    private IEnumerable<char> KeysSortedByDesc => FrequencyDictionary.Keys.OrderByDescending(key => FrequencyDictionary[key]);
 
     public FanoEncoder(string source)
     {
@@ -133,6 +126,31 @@ public class FanoEncoder
         }
 
         return groups;
+    }
+
+    public string Decode(byte[] bites)
+    {
+        string tempKey = String.Empty;
+        string result = String.Empty;
+        var reverted = bites.Reverse();
+        foreach (var bite in reverted)
+        {
+            if (EncodedMap.Values.Contains(tempKey))
+            {
+                result += EncodedMap.Keys.First(key => EncodedMap[key] == tempKey);
+                tempKey = $"{bite}";
+            }
+            else
+            {
+                tempKey = $"{bite}{tempKey}";
+            }
+        }
+        if (EncodedMap.Values.Contains(tempKey))
+        {
+            result += EncodedMap.Keys.First(key => EncodedMap[key] == tempKey);
+        }
+
+        return String.Concat(result.Reverse());
     }
 
     public override string ToString()

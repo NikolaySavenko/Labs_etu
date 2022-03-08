@@ -9,4 +9,4 @@ Console.WriteLine($"Decoded: {encoder.Decode(encoder.Encoded.ToArray())}");
 Console.WriteLine($"Source size: {source.Length*16}; Encoded size: {encoder.Encoded.ToArray().Length}");
 Console.WriteLine($"Map: {String.Join(' ', encoder.EncodedMap.Select(pair => ($"{pair.Key}->{pair.Value}")))}");
 Console.WriteLine($"FrequencyMap: {String.Join(' ', encoder.FrequencyDictionary.Select(pair => ($"{pair.Key}:{pair.Value}")))}");
-Console.WriteLine($"Size -> {encoder.Encoded.ToArray().Length / (double)(source.Length * 16)}");
+Console.WriteLine($"Compress -> {encoder.Compress}");

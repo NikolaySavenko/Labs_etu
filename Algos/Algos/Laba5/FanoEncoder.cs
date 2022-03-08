@@ -67,7 +67,7 @@ public class FanoEncoder
     }
 
     private IEnumerable<char> KeysSortedByDesc => FrequencyDictionary.Keys.OrderByDescending(key => FrequencyDictionary[key]);
-
+    public double Compress => Encoded.ToArray().Length / (double)(Source.Length * 16);
     public FanoEncoder(string source)
     {
         Source = source;

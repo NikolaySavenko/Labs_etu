@@ -1,4 +1,9 @@
-﻿namespace Laba5;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+namespace Laba5;
 
 public class FanoEncoder
 {

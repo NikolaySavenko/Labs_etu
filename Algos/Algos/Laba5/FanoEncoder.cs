@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Laba5.Map;
 
 namespace Laba5;
 
@@ -20,7 +21,7 @@ public class FanoEncoder
                 return _encodedMap;
             }
 
-            var dict = new Dictionary<char, string>();
+            var dict = new ListMap<char, string>();
             foreach (var key in FrequencyDictionary.Keys)
             {
                 dict.Add(key, "");
@@ -54,7 +55,7 @@ public class FanoEncoder
                 return _frequencyMap;
             }
 
-            _frequencyMap = new Dictionary<char, int>();
+            _frequencyMap = new ListMap<char, int>();
             foreach (var symbol in Source)
             {
                 if (_frequencyMap.Keys.Contains(symbol))

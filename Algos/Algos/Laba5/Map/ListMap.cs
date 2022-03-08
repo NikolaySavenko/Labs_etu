@@ -2,8 +2,18 @@
 
 namespace Laba5.Map;
 
-public class ArrayMap<TKey, TValue> : IDictionary<TKey, TValue>
+public class ListMap<TKey, TValue> : IDictionary<TKey, TValue>
 {
+    public ListMap()
+    {
+        Keys = new List<TKey>();
+        Values = new List<TValue>();
+    }
+
+    public int Count { get; }
+    public bool IsReadOnly { get; }
+    public ICollection<TKey> Keys { get; }
+    public ICollection<TValue> Values { get; private set; }
     public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
     {
         throw new NotImplementedException();
@@ -39,12 +49,11 @@ public class ArrayMap<TKey, TValue> : IDictionary<TKey, TValue>
         throw new NotImplementedException();
     }
 
-    public int Count { get; }
-    public bool IsReadOnly { get; }
 
     public void Add(TKey key, TValue value)
     {
-        throw new NotImplementedException();
+        Keys.Add(key);
+        Values.Add(value);
     }
 
     public bool ContainsKey(TKey key)
@@ -64,10 +73,18 @@ public class ArrayMap<TKey, TValue> : IDictionary<TKey, TValue>
 
     public TValue this[TKey key]
     {
-        get => throw new NotImplementedException();
-        set => throw new NotImplementedException();
+        get
+        {
+            var index = Keys.Select( (item, index) => new {Item = item, Index = index}).First(i => i.Item.Equals(key)).Index;
+            return Values.ToList()[index];
+        }
+        set
+        {
+            var tmpKeys = Keys.ToList();
+            var tmpValues = Values.ToList();
+            var index = tmpKeys.IndexOf(key);
+            tmpValues[index] = value;
+            Values = tmpValues;
+        }
     }
-
-    public ICollection<TKey> Keys { get; }
-    public ICollection<TValue> Values { get; }
 }

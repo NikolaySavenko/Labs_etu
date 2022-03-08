@@ -16,7 +16,16 @@ public class ListMap<TKey, TValue> : IDictionary<TKey, TValue>
     public ICollection<TValue> Values { get; private set; }
     public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
     {
-        throw new NotImplementedException();
+        var tmpList = new List<KeyValuePair<TKey, TValue>>();
+        var tmpValues = Values.ToList();
+        var tmpKeys = Keys.ToList();
+        foreach (var key in Keys)
+        {
+            var index = tmpKeys.IndexOf(key);
+            tmpList.Add(new KeyValuePair<TKey, TValue>(key, tmpValues[index]));
+        }
+
+        return tmpList.GetEnumerator();
     }
 
     IEnumerator IEnumerable.GetEnumerator()

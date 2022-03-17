@@ -6,31 +6,39 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
 internal class AddressKtTest {
-    private val parser: AddressParser = AddressParser();
+    private val parser: AddressParser = AddressParser()
 
-    @ParameterizedTest
-    @ValueSource(
-        strings = ["Индекс1, Название города 1, ул. Название улицы, д. Номер дома\n" +
-                "Индекс2, Название города 2, ул. Название улицы, д. Номер дома\n" +
-                "ИндексN, Название города N, ул. Название улицы, д. Номер дома\n"]
-    )
-    fun parseAddresses(source: String) {
+    @Test
+    fun parseAddresses() {
+        val source = "123, Morioh, ул. Несокрушимого алмаза, д. 321" + System.lineSeparator() +
+                "584, Новая Москва, ул. Поросенка Петра, д. 52" + System.lineSeparator() +
+                "777, Санкт-Петербург, ул. Андрей Бреслава, д. -1"
+        val addresses = parser.parseAddresses(source)
+        addresses.map {
+            assertNotNull(it)
+            it!!
 
+            assertNotNull(it.Index)
+            assertNotNull(it.City)
+            assertNotNull(it.Street)
+            assertNotNull(it.HomeNumber)
+        }
     }
 
     @ParameterizedTest
     @ValueSource(
-        strings = ["Индекс1, Название города 1, ул. Название улицы, д. Номер дома",
-            "Индекс2, Название города 2, ул. Название улицы, д. Номер дома",
-            "ИндексN, Название города N, ул. Название улицы, д. Номер дома"]
+        strings = ["123, Morioh, ул. Несокрушимого алмаза, д. 321",
+            "584, Новая Москва, ул. Поросенка Петра, д. 52",
+            "777, Санкт-Петербург, ул. Андрей Бреслава, д. -1"]
     )
     fun parseAddress(source: String) {
-        val address = parser.parseAddress(source);
+        val address = parser.parseAddress(source)
         assertNotNull(address)
         address!!
 
         assertNotNull(address.Index)
         assertNotNull(address.City)
+        assertNotNull(address.Street)
         assertNotNull(address.HomeNumber)
     }
 }

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
-internal class AddressKtTest {
+internal class AddressParserKtTest {
     private val parser: AddressParser = AddressParser()
 
     @Test
@@ -29,7 +29,7 @@ internal class AddressKtTest {
     @ValueSource(
         strings = ["123, Morioh, ул. Несокрушимого алмаза, д. 321",
             "584, Новая Москва, ул. Поросенка Петра, д. 52",
-            "777, Санкт-Петербург, ул. Андрей Бреслава, д. -1"]
+            "777, Санкт-Петербург, ул. Андрея Бреслава, д. -1"]
     )
     fun parseAddress(source: String) {
         val address = parser.parseAddress(source)

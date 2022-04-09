@@ -1,9 +1,10 @@
-package ShapeOperators
+package shapeCollectors
 
 import colors.Color
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import shapes.Circle
 import shapes.Rectangle
 import shapes.Square
@@ -51,6 +52,15 @@ internal class ShapeCollectorTest {
     }
 
     @Test
+    fun getShapeWithMaxAreaEmptyCollector() {
+        val exception = assertThrows<Error> {
+            collector.getShapeWithMaxArea()
+        }
+
+        assertEquals("empty collector", exception.message)
+    }
+
+    @Test
     fun getShapeWithMinArea() {
         val circle = Circle(1.0, Color("blank"), Color("blank"))
         val rectangle = Rectangle(50.0, 10.0, Color("blank"), Color("blank"))
@@ -69,7 +79,7 @@ internal class ShapeCollectorTest {
         collector.addShape(square1)
         collector.addShape(square2)
 
-        assertEquals(5, collector.getShapesAreaSum())
+        assertEquals(5.0, collector.getShapesAreaSum())
     }
 
     @Test
@@ -93,7 +103,7 @@ internal class ShapeCollectorTest {
         collector.addShape(square1)
         collector.addShape(square2)
 
-        val shapes = collector.getShapesByBorderColor(Color("yellow"))
+        val shapes = collector.getShapesByFillColor(Color("yellow"))
         assertEquals(1, shapes.count())
         assertEquals(square1, shapes[0])
     }
@@ -109,7 +119,7 @@ internal class ShapeCollectorTest {
         val shapes = collector.getAllShapes()
         assertEquals(2, shapes.count())
         assertEquals(square1, shapes[0])
-        assertEquals(square2, shapes[0])
+        assertEquals(square2, shapes[1])
     }
 
     @Test
@@ -184,7 +194,7 @@ internal class ShapeCollectorTest {
         assertNotNull(chuckShapes)
         assertEquals(2, chuckShapes.count())
         assertEquals(square3, chuckShapes[0])
-        assertEquals(square4, chuckShapes[0])
+        assertEquals(square4, chuckShapes[1])
     }
 
     @Test
@@ -199,16 +209,16 @@ internal class ShapeCollectorTest {
         collector.addShape(rectangle)
         collector.addShape(triangle)
 
-        val squares = collector.getShapesByType(Square::class.java.typeName)
+        val squares = collector.getShapesByType(Square::class.java)
         assertEquals(square, squares[0])
 
-        val circles = collector.getShapesByType(Circle::class.java.typeName)
+        val circles = collector.getShapesByType(Circle::class.java)
         assertEquals(circle, circles[0])
 
-        val rectangles = collector.getShapesByType(Rectangle::class.java.typeName)
+        val rectangles = collector.getShapesByType(Rectangle::class.java)
         assertEquals(rectangle, rectangles[0])
 
-        val triangles = collector.getShapesByType(Triangle::class.java.typeName)
+        val triangles = collector.getShapesByType(Triangle::class.java)
         assertEquals(triangle, triangles[0])
     }
 }

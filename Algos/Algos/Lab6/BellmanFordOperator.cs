@@ -64,7 +64,7 @@ public class BellmanFordOperator
         {
             foreach (var link in Links)
             {
-                if (dist[link.to] > dist[link.from] + link.cost)
+                if (dist[link.from] != int.MaxValue && dist[link.to] > dist[link.from] + link.cost)
                 {
                     dist[link.to] = dist[link.from] + link.cost;
                 }

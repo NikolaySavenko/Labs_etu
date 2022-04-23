@@ -6,8 +6,8 @@ import shapes.Shape2d
 
 interface ShapeStore {
     fun addShape(shape: ColoredShape2d)
-    fun getShapeWithMaxArea(): ColoredShape2d
-    fun getShapeWithMinArea(): ColoredShape2d
+    fun getShapeWithMaxArea(): ColoredShape2d?
+    fun getShapeWithMinArea(): ColoredShape2d?
     fun getShapesAreaSum(): Double
     fun getShapesByBorderColor(color: Color): List<ColoredShape2d>
     fun getShapesByFillColor(color: Color): List<ColoredShape2d>

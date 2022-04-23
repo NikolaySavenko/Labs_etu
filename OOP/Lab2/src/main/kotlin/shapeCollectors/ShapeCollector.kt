@@ -11,9 +11,9 @@ class ShapeCollector : ShapeStore {
         shapes.add(shape)
     }
 
-    override fun getShapeWithMaxArea(): ColoredShape2d {
+    override fun getShapeWithMaxArea(): ColoredShape2d? {
         if (shapes.isEmpty()) {
-            throw Error("empty collector")
+            return null
         }
 
         var found = shapes.first()
@@ -25,9 +25,9 @@ class ShapeCollector : ShapeStore {
         return found
     }
 
-    override fun getShapeWithMinArea(): ColoredShape2d {
+    override fun getShapeWithMinArea(): ColoredShape2d? {
         if (shapes.isEmpty()) {
-            throw Error("empty collector")
+            return null
         }
 
         var found = shapes.first()

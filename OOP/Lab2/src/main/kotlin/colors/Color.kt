@@ -2,6 +2,6 @@ package colors
 
 data class Color(val hex: String) {
     init {
-        require(hex.matches("-?[0-9a-fA-F]+".toRegex())) { "color should be hex" }
+        require("#([0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})".toRegex().matches(hex)) { "color should be hex" }
     }
 }

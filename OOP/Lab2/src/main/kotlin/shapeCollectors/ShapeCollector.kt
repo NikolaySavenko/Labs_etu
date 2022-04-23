@@ -68,24 +68,11 @@ class ShapeCollector : ShapeStore {
     }
 
     override fun getShapesGroupedByBorderColor(): Map<Color, List<ColoredShape2d>> {
-        return groupShapesBy { it.borderColor }
+        return shapes.groupBy { it.borderColor }
     }
 
     override fun getShapesGroupedByFillColor(): Map<Color, List<ColoredShape2d>> {
-        return groupShapesBy { it.fillColor }
-    }
-
-    private fun <T> groupShapesBy(paramSelector: (ColoredShape2d) -> T): MutableMap<T, MutableList<ColoredShape2d>> {
-        val map = mutableMapOf<T, MutableList<ColoredShape2d>>()
-        shapes.forEach {
-            val param = paramSelector(it)
-            if (map.containsKey(param)) {
-                map[param]!!.add(it)
-            } else {
-                map[param] = mutableListOf(it)
-            }
-        }
-        return map
+        return shapes.groupBy { it.fillColor }
     }
 
     override fun <T> getShapesByType(clazz: Class<T>): List<Shape2d> {

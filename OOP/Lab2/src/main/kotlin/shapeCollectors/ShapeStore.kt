@@ -4,7 +4,7 @@ import colors.Color
 import shapes.ColoredShape2d
 import shapes.Shape2d
 
-interface IShapeCollector {
+interface ShapeStore {
     fun addShape(shape: ColoredShape2d)
     fun getShapeWithMaxArea(): ColoredShape2d
     fun getShapeWithMinArea(): ColoredShape2d

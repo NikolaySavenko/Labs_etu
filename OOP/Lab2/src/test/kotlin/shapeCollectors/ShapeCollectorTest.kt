@@ -12,7 +12,7 @@ import shapes.Triangle
 import kotlin.test.assertNotNull
 
 internal class ShapeCollectorTest {
-    private lateinit var collector: IShapeCollector
+    private lateinit var collector: ShapeStore
 
     @BeforeEach
     fun setUp() {

@@ -4,8 +4,8 @@ import colors.Color
 import shapes.ColoredShape2d
 import shapes.Shape2d
 
-class ShapeCollector : ShapeStore {
-    private val shapes: MutableList<ColoredShape2d> = mutableListOf()
+open class ShapeCollector : ShapeStore {
+    protected val shapes: MutableList<ColoredShape2d> = mutableListOf()
 
     override fun addShape(shape: ColoredShape2d) {
         shapes.add(shape)

@@ -10,7 +10,6 @@ import androidx.compose.ui.awt.ComposeWindow
 import androidx.compose.ui.window.ApplicationScope
 import androidx.compose.ui.window.Window
 import controller.Character2DController
-import data.EmptyFieldProvider
 import data.FieldFromFileProvider
 import model.Cell2D
 import view.Field2DView

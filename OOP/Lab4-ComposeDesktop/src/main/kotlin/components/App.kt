@@ -27,7 +27,7 @@ class App {
         var update by remember { mutableStateOf(false) }
 
         val playerController = Character2DController(cells)
-        val field2DView = Field2DView(cells, playerController)
+        val field2DView = Field2DView(cells)
 
         LaunchedEffect(update) {
             update = false
@@ -56,7 +56,7 @@ class App {
                     text = { Text("Hello text") })
             } else {
                 if (cells.isEmpty()) {
-                    val files = openFileDialog(window, "Select field", listOf(".txt"), false)
+                    val files = openFileDialog(window)
                     if (files.isNotEmpty()) {
                         val fieldProvider = FieldFromFileProvider(files.first().name)
                         cells = fieldProvider.requireField().cells
@@ -68,9 +68,10 @@ class App {
         }
     }
 
-    private fun openFileDialog(window: ComposeWindow, title: String, allowedExtensions: List<String>, allowMultiSelection: Boolean = true): Set<File> {
-        return FileDialog(window, title, FileDialog.LOAD).apply {
-            isMultipleMode = allowMultiSelection
+    private fun openFileDialog(window: ComposeWindow): Set<File> {
+        val allowedExtensions = listOf(".txt")
+        return FileDialog(window, "Select field", FileDialog.LOAD).apply {
+            isMultipleMode = false
 
             // windows
             file = allowedExtensions.joinToString(";") { "*$it" } // e.g. '*.jpg'

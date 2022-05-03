@@ -7,7 +7,7 @@ import java.io.File
 import java.io.InputStream
 
 class FieldFromFileProvider(fileName: String) : FieldProvider {
-    val field = parseFromString(getStringFromFile(File(fileName)))
+    private val field = parseFromString(getStringFromFile(File(fileName)))
 
     override fun requireField(): Field {
         return field
@@ -28,7 +28,7 @@ class FieldFromFileProvider(fileName: String) : FieldProvider {
         val cells = mutableListOf<Cell2D>()
         for(i in lines.indices) {
             for (j in 0 until lines[i].length) {
-                val symbol = lines[i][j];
+                val symbol = lines[i][j]
                 if (symbol != ' ') {
                     cells.add(Cell2D(j, i, symbol))
                 }

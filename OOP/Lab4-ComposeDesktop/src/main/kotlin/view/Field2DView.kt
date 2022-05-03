@@ -14,13 +14,10 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
-import controller.CharacterController
-import data.FieldProvider
 import model.Cell2D
-import model.Field
 
 
-class Field2DView(var cells: MutableList<Cell2D>, val playerController: CharacterController) : View {
+class Field2DView(private var cells: MutableList<Cell2D>) : View {
     @Composable
     @Preview
     override fun render() {

@@ -1,4 +1,3 @@
 package model
 
-open class Cell {
-}
+open class Cell

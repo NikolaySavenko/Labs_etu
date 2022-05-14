@@ -6,11 +6,11 @@ class Contacts : ContactsService {
     private val persons: MutableMap<Person, MutableList<Contact>> = mutableMapOf()
 
     override fun addContact(person: Person, contact: Contact) {
-        persons[person]!!.add(contact)
+        persons.getOrPut(person) { mutableListOf() }.add(contact)
     }
 
     override fun removeContact(person: Person, contact: Contact) {
-        persons[person]!!.remove(contact)
+        persons.getOrPut(person) { mutableListOf() }.remove(contact)
     }
 
     override fun removePerson(person: Person) {
@@ -34,12 +34,12 @@ class Contacts : ContactsService {
     }
 
     override fun getPersonContacts(person: Person): List<Contact> {
-        return persons[person]!!.toList()
+        return persons.getOrPut(person) { mutableListOf() }.toList()
     }
 
     override fun getPersonPhones(person: Person): List<Phone> {
         return buildList {
-            persons[person]!!.forEach {
+            persons.getOrPut(person) { mutableListOf() }.forEach {
                 if (it is Phone) {
                     this.add(it)
                 }
@@ -49,7 +49,7 @@ class Contacts : ContactsService {
 
     override fun getPersonEmails(person: Person): List<Email> {
         return buildList {
-            persons[person]!!.forEach {
+            persons.getOrPut(person) { mutableListOf() }.forEach {
                 if (it is Email) {
                     this.add(it)
                 }
@@ -59,7 +59,7 @@ class Contacts : ContactsService {
 
     override fun getPersonLinks(person: Person): List<Link> {
         return buildList {
-            persons[person]!!.forEach {
+            persons.getOrPut(person) { mutableListOf() }.forEach {
                 if (it is Link) {
                     this.add(it)
                 }
@@ -98,25 +98,25 @@ class Contacts : ContactsService {
     }
 
     override fun removePersonPhones(person: Person) {
-        persons[person]!!.forEach {
+        persons.getOrPut(person) { mutableListOf() }.forEach {
             if (it is Phone) {
-                persons[person]!!.remove(it)
+                persons.getOrPut(person) { mutableListOf() }.remove(it)
             }
         }
     }
 
     override fun removePersonEmails(person: Person) {
-        persons[person]!!.forEach {
+        persons.getOrPut(person) { mutableListOf() }.forEach {
             if (it is Email) {
-                persons[person]!!.remove(it)
+                persons.getOrPut(person) { mutableListOf() }.remove(it)
             }
         }
     }
 
     override fun removePersonLinks(person: Person) {
-        persons[person]!!.forEach {
+        persons.getOrPut(person) { mutableListOf() }.forEach {
             if (it is Link) {
-                persons[person]!!.remove(it)
+                persons.getOrPut(person) { mutableListOf() }.remove(it)
             }
         }
     }

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Kursach2;
+﻿namespace Kursach2;
 
 public class EdmonsKarp
 {
@@ -28,6 +26,35 @@ public class EdmonsKarp
         {
             return false;
         }
+    }
+
+    public long CalculateMaxFlow(string from, string to)
+    {
+	    long maxFlow = 0;
+
+	    while (TryFindLowerCost(from, to, out var flow))
+	    {
+		    var minFlow = flow.Min(link => link.cost);
+
+		    foreach (var flowLink in flow)
+		    {
+			    var linkWithUpdatedCost = flowLink with {cost = flowLink.cost - minFlow};
+			    Links.Remove(flowLink);
+                Links.Add(linkWithUpdatedCost);
+                if (Links.FirstOrDefault(link => link.from == flowLink.to && link.from == flowLink.to) != null)
+                {
+	                var opposite = Links.First(link => link.from == flowLink.to && link.from == flowLink.to);
+	                var newOpposite = opposite with {cost = opposite.cost + minFlow};
+	                Links.Remove(opposite);
+	                Links.Add(newOpposite);
+                }
+		    }
+
+		    maxFlow += minFlow;
+
+	    }
+
+	    return maxFlow;
     }
 
     private bool TryFindLowerCost(string from, string to, out List<FlowLink>? flow)

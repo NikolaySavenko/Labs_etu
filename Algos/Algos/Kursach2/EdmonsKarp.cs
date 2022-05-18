@@ -60,7 +60,7 @@ public class EdmonsKarp
     private bool TryFindLowerCost(string from, string to, out List<FlowLink>? flow)
     {
 	    flow = new List<FlowLink>();
-	    var linkQueue = new Queue<MeetablePoint>(new [] { new MeetablePoint(from, null) });
+	    var linkQueue = new MyQueue<MeetablePoint>(new [] { new MeetablePoint(from, null) });
 	    var metPoints = new List<string>(new [] { from });
 	    var findedFlag = false;
 

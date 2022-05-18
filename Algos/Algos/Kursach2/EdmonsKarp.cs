@@ -97,14 +97,10 @@ public class EdmonsKarp
 
     public void ParseLinks(string source)
     {
-        var fields = source.Split(';');
+        var fields = source.Split();
         if (int.TryParse(fields[2], out var depCost))
         {
             AddLink(new FlowLink(fields[0], fields[1], depCost));
-        }
-        if (int.TryParse(fields[3], out var destCost))
-        {
-            AddLink(new FlowLink(fields[1], fields[0], destCost));
         }
     }
     

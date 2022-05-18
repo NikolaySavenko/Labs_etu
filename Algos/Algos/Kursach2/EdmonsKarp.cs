@@ -28,7 +28,8 @@ public class EdmonsKarp
         }
     }
 
-    public long CalculateMaxFlow(string from, string to)
+	// In this implementation, we do not need to save the initial bandwidth of the channels
+	public long CalculateMaxFlow(string from, string to)
     {
 	    long maxFlow = 0;
 

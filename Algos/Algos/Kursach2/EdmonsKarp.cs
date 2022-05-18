@@ -42,7 +42,7 @@ public class EdmonsKarp
 			    var linkWithUpdatedCost = flowLink with {cost = flowLink.cost - minFlow};
 			    Links.Remove(flowLink);
                 Links.Add(linkWithUpdatedCost);
-                if (Links.FirstOrDefault(link => link.from == flowLink.to && link.from == flowLink.to) != null)
+                if (Links.FirstOrDefault(link => link.from == flowLink.to && link.to == flowLink.from) != null)
                 {
 	                var opposite = Links.First(link => link.from == flowLink.to && link.from == flowLink.to);
 	                var newOpposite = opposite with {cost = opposite.cost + minFlow};

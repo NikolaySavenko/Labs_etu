@@ -20,4 +20,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Kursach2\Kursach2.csproj" />
+  </ItemGroup>
+
 </Project>

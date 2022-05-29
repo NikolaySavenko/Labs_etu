@@ -40,6 +40,62 @@ namespace Kursach2Tests
 			edmonsKarp.ParseLinks(data);
 			Assert.Equal(count, edmonsKarp.Links.Count);
 		}
+		
+		[Theory]
+		[InlineData(@"S O 3
+				O T 3")]
+		public void SingleFlowTest(string data)
+		{
+			File.WriteAllText("./TestData.csv", data);
+			var edmonsKarp = new EdmonsKarp("./TestData.csv");
+			var cost = edmonsKarp.CalculateMaxFlow("S", "T");
+			Assert.Equal(3, cost);
+		}
+		
+		[Theory]
+		[InlineData(@"S A 3
+					S B 3
+					B T 3
+				A T 3")]
+		public void DoubleFlowTest(string data)
+		{
+			File.WriteAllText("./TestData.csv", data);
+			var edmonsKarp = new EdmonsKarp("./TestData.csv");
+			var cost = edmonsKarp.CalculateMaxFlow("S", "T");
+			Assert.Equal(6, cost);
+		}
+		
+		[Theory]
+		[InlineData(@"S A 3
+					S B 3
+					B C 3
+					A C 3
+					C D 3
+					D E 3
+					E T 3")]
+		public void LongFlowTest(string data)
+		{
+			File.WriteAllText("./TestData.csv", data);
+			var edmonsKarp = new EdmonsKarp("./TestData.csv");
+			var cost = edmonsKarp.CalculateMaxFlow("S", "T");
+			Assert.Equal(3, cost);
+		}
+		
+		[Theory]
+		[InlineData(@"S B 3
+					B C 3
+					C D 3
+					D E 3
+					D F 3
+					E T 3
+					F T 3")]
+		public void ReverceLongFlowTest(string data)
+		{
+			File.WriteAllText("./TestData.csv", data);
+			var edmonsKarp = new EdmonsKarp("./TestData.csv");
+			var cost = edmonsKarp.CalculateMaxFlow("S", "T");
+			Assert.Equal(6, cost);
+		}
 
 		[Theory]
 		[InlineData(@"S O 3
@@ -50,7 +106,7 @@ namespace Kursach2Tests
 				Q R 4
 				Q T 2
 				R T 3")]
-		public void FlowTest(string data)
+		public void WikiFlowTest(string data)
 		{
 			File.WriteAllText("./TestData.csv", data);
 			var edmonsKarp = new EdmonsKarp("./TestData.csv");
